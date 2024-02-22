@@ -5,9 +5,12 @@ type Props = {
 };
 
 const HorizontalScrollLayout = ({ children }: Props) => {
+  //this creates a class to hide the scrollbar
   return (
-    <div className="overflow-x-auto">
-      <ul className="flex whitespace-nowrap gap-10">{children}</ul>
+    <div className="overflow-x-scroll scrollbar-hide">
+      <ul className="flex whitespace-nowrap gap-10 pr-16 no-scrollbar">
+        {children}
+      </ul>
     </div>
   );
 };
