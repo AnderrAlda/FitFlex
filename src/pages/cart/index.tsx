@@ -2,8 +2,8 @@ import React from "react";
 import DynamicHeader from "../../components/headers/dynamicHeader";
 import { HeaderTypes } from "../../types/headerTypes";
 
-import ProductCartHorizontal from "../../components/productCartHorizontal/index.tsx";
 import VerticalScrollLayout from "../../layouts/verticalScroll/index.tsx";
+import ShoppingCartProduct from "../../components/shoppingCartProduct/index.tsx";
 
 type Props = {};
 
@@ -13,11 +13,11 @@ const Cart = (props: Props) => {
       <DynamicHeader HeaderType={HeaderTypes.Cart} />
 
       <VerticalScrollLayout height="40rem">
-        <ProductCartHorizontal />
-        <ProductCartHorizontal />
-        <ProductCartHorizontal />
-        <ProductCartHorizontal />
-        <ProductCartHorizontal />
+        <ShoppingCartProduct />
+        <ShoppingCartProduct />
+        <ShoppingCartProduct />
+        <ShoppingCartProduct />
+        <ShoppingCartProduct />
       </VerticalScrollLayout>
     </>
   );

@@ -5,7 +5,7 @@ import SearchBar from "../../components/searchBar";
 import { HeaderTypes } from "../../types/headerTypes";
 import HorizontalScrollLayout from "../../layouts/horizontalScroll/index.tsx";
 import Categories from "../../components/categories";
-import ProductCartHorizontal from "../../components/productCartHorizontal";
+import ProductCartHorizontal from "../../components/productCardHorizontal/index.tsx";
 import ProductCartVertical from "../../components/productCartVertical";
 
 const HomePage = () => {
