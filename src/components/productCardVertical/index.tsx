@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {};
 
-const ProductCartVertical = (props: Props) => {
+const ProductCardVertical = (props: Props) => {
   return (
     <>
       {" "}
@@ -21,4 +21,4 @@ const ProductCartVertical = (props: Props) => {
   );
 };
 
-export default ProductCartVertical;
+export default ProductCardVertical;

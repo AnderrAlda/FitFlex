@@ -1,6 +1,6 @@
 type Props = {};
 
-const ProductCartHorizontal = (props: Props) => {
+const ProductCardHorizontal = (props: Props) => {
   return (
     <>
       <div className="bg-red-100 mt-10 rounded-2xl flex w-80">
@@ -37,4 +37,4 @@ const ProductCartHorizontal = (props: Props) => {
   );
 };
 
-export default ProductCartHorizontal;
+export default ProductCardHorizontal;

@@ -5,8 +5,8 @@ import SearchBar from "../../components/searchBar";
 import { HeaderTypes } from "../../types/headerTypes";
 import HorizontalScrollLayout from "../../layouts/horizontalScroll/index.tsx";
 import Categories from "../../components/categories";
-import ProductCartHorizontal from "../../components/productCardHorizontal/index.tsx";
-import ProductCartVertical from "../../components/productCartVertical";
+import ProductCardVertical from "../../components/productCardVertical/index.tsx";
+import ProductCardHorizontal from "../../components/productCardHorizontal/index.tsx";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
@@ -50,9 +50,9 @@ const HomePage = () => {
         </HorizontalScrollLayout>
 
         <HorizontalScrollLayout>
-          <ProductCartHorizontal />
-          <ProductCartHorizontal />
-          <ProductCartHorizontal />
+          <ProductCardHorizontal />
+          <ProductCardHorizontal />
+          <ProductCardHorizontal />
         </HorizontalScrollLayout>
 
         <div className="mt-10 flex justify-between mx-3">
@@ -61,9 +61,9 @@ const HomePage = () => {
         </div>
 
         <HorizontalScrollLayout>
-          <ProductCartVertical />
-          <ProductCartVertical />
-          <ProductCartVertical />
+          <ProductCardVertical />
+          <ProductCardVertical />
+          <ProductCardVertical />
         </HorizontalScrollLayout>
       </div>
     </>

@@ -7,7 +7,7 @@ import ShoppingCartProduct from "../../components/shoppingCartProduct/index.tsx"
 
 type Props = {};
 
-const Cart = (props: Props) => {
+const CartPage = (props: Props) => {
   return (
     <>
       <DynamicHeader HeaderType={HeaderTypes.Cart} />
@@ -23,4 +23,4 @@ const Cart = (props: Props) => {
   );
 };
 
-export default Cart;
+export default CartPage;
