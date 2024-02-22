@@ -5,6 +5,7 @@ import SearchBar from "../../components/searchBar";
 import { HeaderTypes } from "../../types/headerTypes";
 import HorizontalScrollLayout from "../../layouts/horizontalScroll.tsx/horizontalScroll";
 import Categories from "../../components/categories";
+import ProductCartHorizontal from "../../components/productCartHorizontal";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
@@ -24,7 +25,7 @@ const HomePage = () => {
       </div>
       <SearchBar />
       <div className="flex flex-col h-full mt-10 rounded-3xl p-4 bg-slate-300">
-        <HorizontalScrollLayout>
+        <HorizontalScrollLayout gap={10}>
           <Categories
             name="Slice Sed"
             selected={selectedCategory === "Slice Sed"}
@@ -46,6 +47,17 @@ const HomePage = () => {
             onClick={handleCategoryClick}
           />
         </HorizontalScrollLayout>
+
+        <HorizontalScrollLayout gap={3}>
+          <ProductCartHorizontal />
+          <ProductCartHorizontal />
+          <ProductCartHorizontal />
+        </HorizontalScrollLayout>
+
+        <div className="mt-10">
+          <p>Featured products</p>
+          <p>See All</p>
+        </div>
       </div>
     </>
   );

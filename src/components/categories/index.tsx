@@ -11,12 +11,12 @@ const Categories = ({ name, selected, onClick }: CategoriesProps) => {
 
   return (
     <div
-      className={`flex justify-center items-center rounded-lg ${
+      className={`flex justify-center items-center rounded-2xl w-32 ${
         selected ? "bg-black text-white" : "bg-white text-black"
       } cursor-pointer`}
       onClick={handleClick}
     >
-      <p className="mx-3">{name}</p>
+      <p className="mx-6">{name}</p>
     </div>
   );
 };
