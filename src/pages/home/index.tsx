@@ -3,7 +3,7 @@ import { useState } from "react";
 import DynamicHeader from "../../components/headers/dynamicHeader";
 import SearchBar from "../../components/searchBar";
 import { HeaderTypes } from "../../types/headerTypes";
-import HorizontalScrollLayout from "../../layouts/horizontalScroll.tsx/horizontalScroll";
+import HorizontalScrollLayout from "../../layouts/horizontalScroll/index.tsx";
 import Categories from "../../components/categories";
 import ProductCartHorizontal from "../../components/productCartHorizontal";
 import ProductCartVertical from "../../components/productCartVertical";
