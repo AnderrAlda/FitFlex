@@ -6,6 +6,7 @@ import { HeaderTypes } from "../../types/headerTypes";
 import HorizontalScrollLayout from "../../layouts/horizontalScroll.tsx/horizontalScroll";
 import Categories from "../../components/categories";
 import ProductCartHorizontal from "../../components/productCartHorizontal";
+import ProductCartVertical from "../../components/productCartVertical";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
@@ -25,7 +26,7 @@ const HomePage = () => {
       </div>
       <SearchBar />
       <div className="flex flex-col h-full mt-10 rounded-3xl p-4 bg-slate-300">
-        <HorizontalScrollLayout gap={10}>
+        <HorizontalScrollLayout>
           <Categories
             name="Slice Sed"
             selected={selectedCategory === "Slice Sed"}
@@ -48,16 +49,22 @@ const HomePage = () => {
           />
         </HorizontalScrollLayout>
 
-        <HorizontalScrollLayout gap={3}>
+        <HorizontalScrollLayout>
           <ProductCartHorizontal />
           <ProductCartHorizontal />
           <ProductCartHorizontal />
         </HorizontalScrollLayout>
 
-        <div className="mt-10">
-          <p>Featured products</p>
-          <p>See All</p>
+        <div className="mt-10 flex justify-between mx-3">
+          <p className="font-bold text-2xl text-center">Featured products</p>
+          <p className="mt-2">See All</p>
         </div>
+
+        <HorizontalScrollLayout>
+          <ProductCartVertical />
+          <ProductCartVertical />
+          <ProductCartVertical />
+        </HorizontalScrollLayout>
       </div>
     </>
   );

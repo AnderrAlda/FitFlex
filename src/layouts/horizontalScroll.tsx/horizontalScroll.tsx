@@ -2,20 +2,19 @@ import React, { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  gap: number;
 };
 
-const HorizontalScrollLayout = ({ children, gap }: Props) => {
+const HorizontalScrollLayout = ({ children }: Props) => {
   // Calculate width to ensure each child has the same size
-  const childWidth = `calc((100% - ${gap}px * (${React.Children.count(
+  const childWidth = `calc((100% - 3px * (${React.Children.count(
     children
   )} - 1)) / ${React.Children.count(children)})`;
 
   return (
     <div className="overflow-x-scroll scrollbar-hide">
       <ul
-        className={`flex no-scrollbar gap-${gap}`}
-        style={{ width: `calc(100% + ${gap}px)` }}
+        className={`flex no-scrollbar gap-3`}
+        style={{ width: `calc(100% + 3rem)` }}
       >
         {React.Children.map(children, (child, index) => (
           <li
