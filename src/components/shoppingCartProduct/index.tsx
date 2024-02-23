@@ -1,21 +1,41 @@
 import React from "react";
 import { RogueAlpacaSled } from "../../assets/images";
 
-type Props = {};
+interface StaticAsset {
+  Image: string;
+}
+type Image = StaticAsset | string;
 
-const ShoppingCartProduct = (props: Props) => {
+type Props = {
+  name: string;
+  price: number;
+
+  img: Image;
+};
+
+const ShoppingCartProduct = ({ name, price, img }: Props) => {
+  let src: string; // Define a variable to hold the src value
+
+  if (typeof img === "string") {
+    // If img is a string, directly assign it to src
+    src = img;
+  } else {
+    // If img is an object of type StaticAsset, choose one of its properties as src
+    src = img.Image; // You may need to handle other cases here based on your requirements
+  }
+
   return (
     <>
       {" "}
       <div className="flex">
         <img
           className="w-36 h-36 object-cover p-3 rounded-3xl mt-4"
-          src={RogueAlpacaSled}
+          src={src}
           alt="RogueAlpacaSled"
         />
         <div className="mt-8 ml-3">
-          <p>Rogue Alpaca Sled</p>
-          <p className="font-bold">USD 302</p>
+          <p>{name}</p>
+          <p className="font-bold">USD {price}</p>
           <div className="flex gap-3 mt-3">
             <svg
               className="h-8"

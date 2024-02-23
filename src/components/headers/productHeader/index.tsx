@@ -29,7 +29,7 @@ const ProductHeader = (props: Props) => {
               ></path>
             </svg>
             <p className="absolute right-4 top-9 bg-slate-600 rounded-lg w-4 text-center">
-              {contextData}
+              {contextData.length}
             </p>
           </Link>
 

@@ -31,7 +31,7 @@ const HomeHeader = (props: Props) => {
             ></path>
           </svg>
           <p className="absolute right-4 top-9 bg-slate-500 rounded-lg w-4 text-center">
-            {contextData}
+            {contextData.length}
           </p>
         </Link>
       </div>

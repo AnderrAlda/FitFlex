@@ -37,7 +37,7 @@ interface User {
   name: string;
   password: string;
   email: string;
-  cart: any[]; // You might want to define a type for cart items
+
   wishlist: Product[];
 }
 
@@ -138,7 +138,7 @@ export const data: Data = {
       name: "random_user_123",
       password: "RandomPassword123!",
       email: "random_user_123@example.com",
-      cart: [],
+
       wishlist: [
         {
           id: "64c9faed738507dddfc7c73c",

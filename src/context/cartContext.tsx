@@ -1,13 +1,26 @@
 import React, { createContext, useState, useEffect } from "react";
 
+interface StaticAsset {
+  Image: string;
+}
+type Image = StaticAsset | string;
+
+interface Cart {
+  id: string;
+  name: string;
+  price: number;
+  stock: number;
+  image: Image;
+}
+
 interface ContextValueType {
-  contextData: number;
-  setcontextData: React.Dispatch<React.SetStateAction<number>>;
+  contextData: Cart[];
+  addToCart: (item: Cart) => void;
 }
 
 export const CartContext = createContext<ContextValueType>({
-  contextData: 4,
-  setcontextData: () => {},
+  contextData: [],
+  addToCart: () => {},
 });
 
 interface DataContextProviderProps {
@@ -17,16 +30,20 @@ interface DataContextProviderProps {
 export const DataContextProvider: React.FC<DataContextProviderProps> = (
   props
 ) => {
-  const [contextData, setcontextData] = useState(() => {
+  const [contextData, setContextData] = useState<Cart[]>(() => {
     const storedData = localStorage.getItem("cartData");
-    return storedData ? JSON.parse(storedData) : 4;
+    return storedData ? JSON.parse(storedData) : [];
   });
 
   useEffect(() => {
     localStorage.setItem("cartData", JSON.stringify(contextData));
   }, [contextData]);
 
-  const value: ContextValueType = { contextData, setcontextData };
+  const addToCart = (item: Cart) => {
+    setContextData((prevData: Cart[]) => [...prevData, item]);
+  };
+
+  const value: ContextValueType = { contextData, addToCart };
 
   return (
     <CartContext.Provider value={value}>{props.children}</CartContext.Provider>

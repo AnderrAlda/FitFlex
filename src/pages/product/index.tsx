@@ -20,24 +20,30 @@ const ProductPage = (props: Props) => {
     setSelectedCategory(categoryName);
   };
 
-  const { contextData, setcontextData } = useContext(CartContext);
-  const handleAddToCart = () => {
-    // Update the context value by incrementing the cart value
-    setcontextData(contextData + 1);
-  };
-
   const { productId } = useParams();
   const product = productsResponse.products.find(
     (product) => product.id === productId
-  );
+  )!;
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    const newItem = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      image: product.image[0],
+    };
+    addToCart(newItem);
+  };
 
   return (
     <>
       <DynamicHeader HeaderType={HeaderTypes.Product} />
 
       <div className="mt-10 ml-5">
-        <p>USD {product?.price}</p>
-        <p className="font-bold text-3xl">{product?.name}</p>
+        <p>USD {product.price}</p>
+        <p className="font-bold text-3xl">{product.name}</p>
       </div>
 
       <div className="mt-5">

@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import DynamicHeader from "../../components/headers/dynamicHeader";
 import { HeaderTypes } from "../../types/headerTypes";
 
 import VerticalScrollLayout from "../../layouts/verticalScroll/index.tsx";
 import ShoppingCartProduct from "../../components/shoppingCartProduct/index.tsx";
 
+import { data } from "../../data.ts";
+import { CartContext } from "../../context/cartContext.tsx";
 type Props = {};
 
 const CartPage = (props: Props) => {
+  const { contextData } = useContext(CartContext); // Destructuring contextData from CartContext
+  console.log(contextData);
   return (
     <>
       <DynamicHeader HeaderType={HeaderTypes.Cart} />
 
       <VerticalScrollLayout height="40rem">
-        <ShoppingCartProduct />
-        <ShoppingCartProduct />
-        <ShoppingCartProduct />
-        <ShoppingCartProduct />
-        <ShoppingCartProduct />
+        {contextData.map((cartItem) => (
+          <ShoppingCartProduct
+            key={cartItem.id}
+            name={cartItem.name}
+            price={cartItem.price}
+            img={cartItem.image}
+          />
+        ))}
       </VerticalScrollLayout>
 
       <div className="mt-10">
