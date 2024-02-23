@@ -19,11 +19,13 @@ const CartPage = (props: Props) => {
       <VerticalScrollLayout height="40rem">
         {contextData.map((cartItem) => (
           <ShoppingCartProduct
+            id={cartItem.id}
             key={cartItem.id}
             name={cartItem.name}
             price={cartItem.price}
-            img={cartItem.image}
+            image={cartItem.image}
             amount={cartItem.amount}
+            stock={cartItem.stock}
           />
         ))}
       </VerticalScrollLayout>
