@@ -75,9 +75,26 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = (
       // If the item exists, update its amount
       const updatedData = [...contextData];
       updatedData[existingItemIndex].amount += 1;
+
+      // Check if the updated amount exceeds the stock
+      if (
+        updatedData[existingItemIndex].amount >
+        updatedData[existingItemIndex].stock
+      ) {
+        // If it does, set the amount back to the stock level
+        updatedData[existingItemIndex].amount =
+          updatedData[existingItemIndex].stock;
+      }
+
       setContextData(updatedData);
     } else {
       // If the item does not exist, add it to the cart
+      // Check if the amount exceeds the stock before adding
+      if (item.amount > item.stock) {
+        // If it does, set the amount to the stock level
+        item.amount = item.stock;
+      }
+
       setContextData((prevData: Cart[]) => [...prevData, item]);
     }
   };
