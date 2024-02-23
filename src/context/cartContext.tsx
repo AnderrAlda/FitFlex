@@ -21,6 +21,7 @@ interface ContextValueType {
   totalPrice: number;
   removeToCart: (item: Cart) => void;
   removeFromCart: (item: Cart) => void;
+  clearCart: () => void; // New function to clear the cart
 }
 
 export const CartContext = createContext<ContextValueType>({
@@ -30,6 +31,7 @@ export const CartContext = createContext<ContextValueType>({
   totalPrice: 0,
   removeToCart: () => {},
   removeFromCart: () => {},
+  clearCart: () => {}, // Default implementation as an empty function
 });
 
 interface DataContextProviderProps {
@@ -109,12 +111,19 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = (
     // Update the context data
     setContextData(updatedData);
   };
+
+  // Function to clear the entire cart
+  const clearCart = () => {
+    setContextData([]);
+  };
+
   const value: ContextValueType = {
     contextData,
     addToCart,
     totalAmount,
     removeToCart,
     removeFromCart,
+    clearCart, // Add clearCart to the context value
     totalPrice,
   };
 
