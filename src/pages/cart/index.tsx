@@ -5,13 +5,14 @@ import { HeaderTypes } from "../../types/headerTypes";
 import VerticalScrollLayout from "../../layouts/verticalScroll/index.tsx";
 import ShoppingCartProduct from "../../components/shoppingCartProduct/index.tsx";
 
-import { data } from "../../data.ts";
 import { CartContext } from "../../context/cartContext.tsx";
 type Props = {};
 
 const CartPage = (props: Props) => {
   const { contextData } = useContext(CartContext); // Destructuring contextData from CartContext
   console.log(contextData);
+
+  const { totalPrice, totalAmount } = useContext(CartContext);
   return (
     <>
       <DynamicHeader HeaderType={HeaderTypes.Cart} />
@@ -32,8 +33,8 @@ const CartPage = (props: Props) => {
 
       <div className="mt-10">
         <div className="flex justify-around">
-          <p>Total 2 items</p>
-          <p className="font-bold">USD 750</p>
+          <p>Total {totalAmount} items</p>
+          <p className="font-bold">USD {totalPrice}</p>
         </div>
         <button className="bg-black text-white rounded-3xl p-3 ml-12 mt-2 w-72   flex justify-around">
           <p className="font-bold">Proceed to checkout</p>
