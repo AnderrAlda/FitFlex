@@ -1,13 +1,31 @@
-import { RogueAlpacaSled } from "../../assets/images";
 import { Link } from "react-router-dom";
-type Props = {};
 
-const ProductCardHorizontal = (props: Props) => {
+interface StaticAsset {
+  Image: string;
+}
+type Image = StaticAsset | string;
+
+type Props = {
+  name: string;
+  img: Image;
+};
+
+const ProductCardHorizontal = ({ name, img }: Props) => {
+  let src: string; // Define a variable to hold the src value
+
+  if (typeof img === "string") {
+    // If img is a string, directly assign it to src
+    src = img;
+  } else {
+    // If img is an object of type StaticAsset, choose one of its properties as src
+    src = img.Image; // You may need to handle other cases here based on your requirements
+  }
+
   return (
     <>
       <div className="bg-red-100 mt-10 rounded-2xl flex w-80">
         <div className="  mt-4 mb-4">
-          <p className="text-3xl font-bold ml-3">Rogue Dog Slice 1.2</p>
+          <p className="text-3xl font-bold ml-3">{name}</p>
           <Link to="/product/RogueDogSlice1.2">
             <div className="flex gap-3 mt-3 mb-3 align-middle items-center">
               <p className="underline text-center ml-3 ">Shop now</p>
@@ -33,7 +51,7 @@ const ProductCardHorizontal = (props: Props) => {
         </div>
         <img
           className="w-36 h-36 object-cover p-3 rounded-3xl mt-4"
-          src={RogueAlpacaSled}
+          src={src}
           alt="RogueAlpacaSled"
         />
       </div>

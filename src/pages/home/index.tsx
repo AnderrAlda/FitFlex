@@ -7,6 +7,7 @@ import HorizontalScrollLayout from "../../layouts/horizontalScroll/index.tsx";
 import Categories from "../../components/categories";
 import ProductCardVertical from "../../components/productCardVertical/index.tsx";
 import ProductCardHorizontal from "../../components/productCardHorizontal/index.tsx";
+import { productsResponse } from "../../data.ts";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
@@ -50,20 +51,28 @@ const HomePage = () => {
         </HorizontalScrollLayout>
 
         <HorizontalScrollLayout>
-          <ProductCardHorizontal />
-          <ProductCardHorizontal />
-          <ProductCardHorizontal />
+          {productsResponse.products.map((item) => (
+            <ProductCardHorizontal
+              key={item.id}
+              name={item.name}
+              img={item.image[0]}
+            />
+          ))}
         </HorizontalScrollLayout>
-
         <div className="mt-10 flex justify-between mx-3">
           <p className="font-bold text-2xl text-center">Featured products</p>
           <p className="mt-2">See All</p>
         </div>
 
         <HorizontalScrollLayout>
-          <ProductCardVertical />
-          <ProductCardVertical />
-          <ProductCardVertical />
+          {productsResponse.products.map((item) => (
+            <ProductCardVertical
+              key={item.id}
+              name={item.name}
+              img={item.image[0]}
+              price={item.price}
+            />
+          ))}
         </HorizontalScrollLayout>
       </div>
     </>

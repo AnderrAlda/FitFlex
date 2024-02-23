@@ -8,6 +8,7 @@ import VerticalScrollLayout from "../../layouts/verticalScroll";
 import ProductCardVertical from "../../components/productCardVertical";
 import { RogueAlpacaSled } from "../../assets/images";
 import { CartContext } from "../../context/cartContext";
+import { productsResponse } from "../../data";
 
 type Props = {};
 
@@ -102,9 +103,14 @@ const ProductPage = (props: Props) => {
 
         <div className="ml-5 mb-5">
           <HorizontalScrollLayout>
-            <ProductCardVertical />
-            <ProductCardVertical />
-            <ProductCardVertical />
+            {productsResponse.products.map((item) => (
+              <ProductCardVertical
+                key={item.id}
+                name={item.name}
+                img={item.image[0]}
+                price={item.price}
+              />
+            ))}
           </HorizontalScrollLayout>
         </div>
       </div>

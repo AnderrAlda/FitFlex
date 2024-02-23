@@ -4,8 +4,7 @@ import { RogueEchoDogSled } from "./assets/images";
 import { RogueSliceSled } from "./assets/images";
 
 interface StaticAsset {
-  RogueAlpacaSled: string;
-  RogueEchoDogSled: string;
+  Image: string;
 }
 type Image = StaticAsset | string;
 interface Review {
@@ -50,7 +49,7 @@ export const productsResponse: ProductsResponse = {
   products: [
     {
       id: "64c9faed738507dddfc7c73c",
-      name: "RogueAlpacaSled",
+      name: "Rogue Alpaca Sled",
       price: 10,
       stock: 50,
       image: [RogueAlpacaSled, RogueAlpacaSled],
@@ -77,7 +76,7 @@ export const productsResponse: ProductsResponse = {
     },
     {
       id: "64c9faed738507dddfc7c73c",
-      name: "RogueEchoDogSled",
+      name: "Rogue Echo Sled",
       price: 10,
       stock: 50,
       image: [RogueEchoDogSled, RogueEchoDogSled],
@@ -104,7 +103,7 @@ export const productsResponse: ProductsResponse = {
     },
     {
       id: "64c9faed738507dddfc7c73c",
-      name: "RogueSliceSled",
+      name: "Rogue Slice Sled",
       price: 10,
       stock: 50,
       image: [RogueSliceSled, RogueSliceSled],
