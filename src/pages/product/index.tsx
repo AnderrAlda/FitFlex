@@ -3,6 +3,8 @@ import { HeaderTypes } from "../../types/headerTypes";
 import DynamicHeader from "../../components/headers/dynamicHeader";
 import Categories from "../../components/categories";
 import HorizontalScrollLayout from "../../layouts/horizontalScroll";
+import Comment from "../../components/comment";
+import VerticalScrollLayout from "../../layouts/verticalScroll";
 
 type Props = {};
 
@@ -40,6 +42,44 @@ const ProductPage = (props: Props) => {
             onClick={handleCategoryClick}
           />
         </HorizontalScrollLayout>
+      </div>
+
+      <div className="mt-5">
+        <HorizontalScrollLayout>
+          <img
+            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
+            src="src/assets/RogueAlpacaSled.png"
+            alt="RogueAlpacaSled"
+          />
+          <img
+            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
+            src="src/assets/RogueAlpacaSled.png"
+            alt="RogueAlpacaSled"
+          />
+          <img
+            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
+            src="src/assets/RogueAlpacaSled.png"
+            alt="RogueAlpacaSled"
+          />{" "}
+          <img
+            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
+            src="src/assets/RogueAlpacaSled.png"
+            alt="RogueAlpacaSled"
+          />
+        </HorizontalScrollLayout>
+      </div>
+
+      <button className="bg-black text-white rounded-3xl p-3 ml-28 mt-4 w-40   flex justify-around">
+        <p className="font-bold">Add to cart</p>
+      </button>
+
+      <div className="mt-10 ml-5">
+        <p className="font-bold">Reviews (4)</p>
+        <VerticalScrollLayout height="10rem">
+          <Comment />
+          <Comment />
+          <Comment />
+        </VerticalScrollLayout>
       </div>
     </>
   );
