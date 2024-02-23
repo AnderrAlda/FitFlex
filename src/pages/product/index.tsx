@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HeaderTypes } from "../../types/headerTypes";
 import DynamicHeader from "../../components/headers/dynamicHeader";
 import Categories from "../../components/categories";
@@ -7,6 +7,7 @@ import Comment from "../../components/comment";
 import VerticalScrollLayout from "../../layouts/verticalScroll";
 import ProductCardVertical from "../../components/productCardVertical";
 import { RogueAlpacaSled } from "../../assets/images";
+import { CartContext } from "../../context/cartContext";
 
 type Props = {};
 
@@ -15,6 +16,12 @@ const ProductPage = (props: Props) => {
 
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
+  };
+
+  const { contextData, setcontextData } = useContext(CartContext);
+  const handleAddToCart = () => {
+    // Update the context value by incrementing the cart value
+    setcontextData(contextData + 1);
   };
 
   return (
@@ -71,7 +78,10 @@ const ProductPage = (props: Props) => {
         </HorizontalScrollLayout>
       </div>
 
-      <button className="bg-black text-white rounded-3xl p-3 ml-28 mt-4 w-40   flex justify-around">
+      <button
+        className="bg-black text-white rounded-3xl p-3 ml-28 mt-4 w-40   flex justify-around"
+        onClick={handleAddToCart}
+      >
         <p className="font-bold">Add to cart</p>
       </button>
 

@@ -1,14 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../../context/cartContext";
 
 type Props = {};
 
 const ProductHeader = (props: Props) => {
+  const { contextData } = useContext(CartContext);
   return (
     <>
       <div>
         <div className="flex justify-center relative">
           <Link to="/">
-            {" "}
             <svg
               className="h-8 absolute left-5 mt-4"
               data-slot="icon"
@@ -26,6 +28,9 @@ const ProductHeader = (props: Props) => {
                 d="M15.75 19.5 8.25 12l7.5-7.5"
               ></path>
             </svg>
+            <p className="absolute right-4 top-9 bg-slate-600 rounded-lg w-4 text-center">
+              {contextData}
+            </p>
           </Link>
 
           <p className="mt-4 text-xl font-bold">Product</p>
