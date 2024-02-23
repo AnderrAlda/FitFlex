@@ -27,13 +27,17 @@ const ProductPage = (props: Props) => {
   const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
+    // Create a new item object
     const newItem = {
       id: product.id,
       name: product.name,
       price: product.price,
       stock: product.stock,
       image: product.image[0],
+      amount: 1,
     };
+
+    // Call addToCart function to add the item to the cart
     addToCart(newItem);
   };
 

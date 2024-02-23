@@ -9,11 +9,11 @@ type Image = StaticAsset | string;
 type Props = {
   name: string;
   price: number;
-
+  amount: number;
   img: Image;
 };
 
-const ShoppingCartProduct = ({ name, price, img }: Props) => {
+const ShoppingCartProduct = ({ name, price, img, amount }: Props) => {
   let src: string; // Define a variable to hold the src value
 
   if (typeof img === "string") {
@@ -54,7 +54,7 @@ const ShoppingCartProduct = ({ name, price, img }: Props) => {
                 d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               ></path>
             </svg>
-            <p className="text-xl">1</p>
+            <p className="text-xl">{amount}</p>
             <svg
               className="h-8"
               data-slot="icon"

@@ -11,6 +11,7 @@ interface Cart {
   price: number;
   stock: number;
   image: Image;
+  amount: number;
 }
 
 interface ContextValueType {
@@ -40,7 +41,20 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = (
   }, [contextData]);
 
   const addToCart = (item: Cart) => {
-    setContextData((prevData: Cart[]) => [...prevData, item]);
+    // Check if the item already exists in the cart
+    const existingItemIndex = contextData.findIndex(
+      (existingItem) => existingItem.id === item.id
+    );
+
+    if (existingItemIndex !== -1) {
+      // If the item exists, update its amount
+      const updatedData = [...contextData];
+      updatedData[existingItemIndex].amount += 1;
+      setContextData(updatedData);
+    } else {
+      // If the item does not exist, add it to the cart
+      setContextData((prevData: Cart[]) => [...prevData, item]);
+    }
   };
 
   const value: ContextValueType = { contextData, addToCart };

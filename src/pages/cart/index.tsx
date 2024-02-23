@@ -23,6 +23,7 @@ const CartPage = (props: Props) => {
             name={cartItem.name}
             price={cartItem.price}
             img={cartItem.image}
+            amount={cartItem.amount}
           />
         ))}
       </VerticalScrollLayout>
