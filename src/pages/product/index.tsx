@@ -5,6 +5,7 @@ import Categories from "../../components/categories";
 import HorizontalScrollLayout from "../../layouts/horizontalScroll";
 import Comment from "../../components/comment";
 import VerticalScrollLayout from "../../layouts/verticalScroll";
+import ProductCardVertical from "../../components/productCardVertical";
 
 type Props = {};
 
@@ -80,6 +81,21 @@ const ProductPage = (props: Props) => {
           <Comment />
           <Comment />
         </VerticalScrollLayout>
+      </div>
+
+      <div className="mt-10">
+        <div className="flex justify-around">
+          <p className="font-bold text-2xl">Another products</p>
+          <p className="mt-2">See All</p>
+        </div>
+
+        <div className="ml-5 mb-5">
+          <HorizontalScrollLayout>
+            <ProductCardVertical />
+            <ProductCardVertical />
+            <ProductCardVertical />
+          </HorizontalScrollLayout>
+        </div>
       </div>
     </>
   );
