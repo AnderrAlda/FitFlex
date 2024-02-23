@@ -1,11 +1,8 @@
-import CartPage from "./pages/cart";
-import HomePage from "./pages/home";
-import ProductPage from "./pages/product";
-
+import { Outlet } from "react-router";
 function App() {
   return (
     <>
-      <HomePage />
+      <Outlet />
     </>
   );
 }
