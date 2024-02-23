@@ -8,9 +8,10 @@ type Image = StaticAsset | string;
 type Props = {
   name: string;
   img: Image;
+  id: string;
 };
 
-const ProductCardHorizontal = ({ name, img }: Props) => {
+const ProductCardHorizontal = ({ name, img, id }: Props) => {
   let src: string; // Define a variable to hold the src value
 
   if (typeof img === "string") {
@@ -26,7 +27,8 @@ const ProductCardHorizontal = ({ name, img }: Props) => {
       <div className="bg-red-100 mt-10 rounded-2xl flex w-80">
         <div className="  mt-4 mb-4">
           <p className="text-3xl font-bold ml-3">{name}</p>
-          <Link to="/product/RogueDogSlice1.2">
+          <Link to={`/product/${id}`}>
+            {" "}
             <div className="flex gap-3 mt-3 mb-3 align-middle items-center">
               <p className="underline text-center ml-3 ">Shop now</p>
               <svg

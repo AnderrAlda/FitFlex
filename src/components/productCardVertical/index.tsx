@@ -1,6 +1,3 @@
-import React from "react";
-import { RogueAlpacaSled } from "../../assets/images";
-
 interface StaticAsset {
   Image: string;
 }

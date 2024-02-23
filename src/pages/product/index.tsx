@@ -6,13 +6,10 @@ import HorizontalScrollLayout from "../../layouts/horizontalScroll";
 import Comment from "../../components/comment";
 import VerticalScrollLayout from "../../layouts/verticalScroll";
 import ProductCardVertical from "../../components/productCardVertical";
-import { RogueAlpacaSled } from "../../assets/images";
+
 import { CartContext } from "../../context/cartContext";
 import { data, productsResponse } from "../../data";
-interface StaticAsset {
-  Image: string;
-}
-type Image = StaticAsset | string;
+import { useParams } from "react-router";
 
 type Props = {};
 
@@ -29,8 +26,9 @@ const ProductPage = (props: Props) => {
     setcontextData(contextData + 1);
   };
 
+  const { productId } = useParams();
   const product = productsResponse.products.find(
-    (product) => product.id === "64c9faed738507dddfc7c73c"
+    (product) => product.id === productId
   );
 
   return (

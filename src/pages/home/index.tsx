@@ -56,6 +56,7 @@ const HomePage = () => {
               key={item.id}
               name={item.name}
               img={item.image[0]}
+              id={item.id}
             />
           ))}
         </HorizontalScrollLayout>

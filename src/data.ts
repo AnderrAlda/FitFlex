@@ -75,7 +75,7 @@ export const productsResponse: ProductsResponse = {
       ],
     },
     {
-      id: "64c9faed738507dddfc7c73c",
+      id: "64c9faed738507dddfc7c74b",
       name: "Rogue Echo Sled",
       price: 10,
       stock: 50,
@@ -102,7 +102,7 @@ export const productsResponse: ProductsResponse = {
       ],
     },
     {
-      id: "64c9faed738507dddfc7c73c",
+      id: "64c9faed738507dddfc7c76d",
       name: "Rogue Slice Sled",
       price: 10,
       stock: 50,
