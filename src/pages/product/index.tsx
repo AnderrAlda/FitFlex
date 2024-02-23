@@ -6,6 +6,7 @@ import HorizontalScrollLayout from "../../layouts/horizontalScroll";
 import Comment from "../../components/comment";
 import VerticalScrollLayout from "../../layouts/verticalScroll";
 import ProductCardVertical from "../../components/productCardVertical";
+import { RogueAlpacaSled } from "../../assets/images";
 
 type Props = {};
 
@@ -49,22 +50,22 @@ const ProductPage = (props: Props) => {
         <HorizontalScrollLayout>
           <img
             className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src="src/assets/RogueAlpacaSled.png"
+            src={RogueAlpacaSled}
             alt="RogueAlpacaSled"
           />
           <img
             className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src="src/assets/RogueAlpacaSled.png"
+            src={RogueAlpacaSled}
             alt="RogueAlpacaSled"
           />
           <img
             className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src="src/assets/RogueAlpacaSled.png"
+            src={RogueAlpacaSled}
             alt="RogueAlpacaSled"
           />{" "}
           <img
             className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src="src/assets/RogueAlpacaSled.png"
+            src={RogueAlpacaSled}
             alt="RogueAlpacaSled"
           />
         </HorizontalScrollLayout>

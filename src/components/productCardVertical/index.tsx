@@ -1,4 +1,5 @@
 import React from "react";
+import { RogueAlpacaSled } from "../../assets/images";
 
 type Props = {};
 
@@ -9,7 +10,7 @@ const ProductCardVertical = (props: Props) => {
       <div className="bg-red-100 w-40 h-42 rounded-2xl mt-4">
         <img
           className="w-40 h-40 object-cover p-3 rounded-3xl"
-          src="src/assets/RogueAlpacaSled.png"
+          src={RogueAlpacaSled}
           alt="RogueAlpacaSled"
         />
         <div className="ml-3 mb-2">

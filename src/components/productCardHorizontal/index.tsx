@@ -1,3 +1,5 @@
+import { RogueAlpacaSled } from "../../assets/images";
+
 type Props = {};
 
 const ProductCardHorizontal = (props: Props) => {
@@ -29,7 +31,7 @@ const ProductCardHorizontal = (props: Props) => {
         </div>
         <img
           className="w-36 h-36 object-cover p-3 rounded-3xl mt-4"
-          src="src/assets/RogueAlpacaSled.png"
+          src={RogueAlpacaSled}
           alt="RogueAlpacaSled"
         />
       </div>

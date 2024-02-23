@@ -1,4 +1,5 @@
 import React from "react";
+import { RogueAlpacaSled } from "../../assets/images";
 
 type Props = {};
 
@@ -9,7 +10,7 @@ const ShoppingCartProduct = (props: Props) => {
       <div className="flex">
         <img
           className="w-36 h-36 object-cover p-3 rounded-3xl mt-4"
-          src="src/assets/RogueAlpacaSled.png"
+          src={RogueAlpacaSled}
           alt="RogueAlpacaSled"
         />
         <div className="mt-8 ml-3">

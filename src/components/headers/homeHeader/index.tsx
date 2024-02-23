@@ -1,14 +1,12 @@
+import { logo } from "../../../assets/images";
+
 type Props = {};
 
 const HomeHeader = (props: Props) => {
   return (
     <div>
       <div className="flex justify-center relative">
-        <img
-          className="h-12 mt-3  "
-          src="src/assets/logo.png"
-          alt="logo image"
-        />
+        <img className="h-12 mt-3  " src={logo} alt="logo image" />
 
         <svg
           className="h-8 absolute right-5 mt-4"

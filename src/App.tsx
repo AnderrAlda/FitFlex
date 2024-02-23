@@ -5,7 +5,7 @@ import ProductPage from "./pages/product";
 function App() {
   return (
     <>
-      <ProductPage />
+      <HomePage />
     </>
   );
 }
