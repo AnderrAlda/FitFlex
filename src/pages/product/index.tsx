@@ -8,7 +8,11 @@ import VerticalScrollLayout from "../../layouts/verticalScroll";
 import ProductCardVertical from "../../components/productCardVertical";
 import { RogueAlpacaSled } from "../../assets/images";
 import { CartContext } from "../../context/cartContext";
-import { productsResponse } from "../../data";
+import { data, productsResponse } from "../../data";
+interface StaticAsset {
+  Image: string;
+}
+type Image = StaticAsset | string;
 
 type Props = {};
 
@@ -25,13 +29,17 @@ const ProductPage = (props: Props) => {
     setcontextData(contextData + 1);
   };
 
+  const product = productsResponse.products.find(
+    (product) => product.id === "64c9faed738507dddfc7c73c"
+  );
+
   return (
     <>
       <DynamicHeader HeaderType={HeaderTypes.Product} />
 
       <div className="mt-10 ml-5">
-        <p>USD 431</p>
-        <p className="font-bold text-3xl">Rogue Echo Dog Sled</p>
+        <p>USD {product?.price}</p>
+        <p className="font-bold text-3xl">{product?.name}</p>
       </div>
 
       <div className="mt-5">
@@ -56,26 +64,15 @@ const ProductPage = (props: Props) => {
 
       <div className="mt-5">
         <HorizontalScrollLayout>
-          <img
-            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src={RogueAlpacaSled}
-            alt="RogueAlpacaSled"
-          />
-          <img
-            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src={RogueAlpacaSled}
-            alt="RogueAlpacaSled"
-          />
-          <img
-            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src={RogueAlpacaSled}
-            alt="RogueAlpacaSled"
-          />{" "}
-          <img
-            className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-            src={RogueAlpacaSled}
-            alt="RogueAlpacaSled"
-          />
+          {product &&
+            product.image.map((item, index) => (
+              <img
+                key={index} // Unique key prop
+                className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
+                src={typeof item === "string" ? item : item.Image}
+                alt="RogueAlpacaSled"
+              />
+            ))}
         </HorizontalScrollLayout>
       </div>
 
@@ -89,9 +86,27 @@ const ProductPage = (props: Props) => {
       <div className="mt-10 ml-5">
         <p className="font-bold">Reviews (4)</p>
         <VerticalScrollLayout height="10rem">
-          <Comment />
-          <Comment />
-          <Comment />
+          {productsResponse &&
+            productsResponse.products &&
+            productsResponse.products
+              .find((product) => product.id === "64c9faed738507dddfc7c73c")
+              ?.reviews.map((review, index) => {
+                // Find the user with matching userId
+                const user = data.users.find(
+                  (user) => user.id === review.userId
+                );
+                // Use ternary operator to conditionally render name
+                const name = user ? user.name : "Unknown";
+                return (
+                  <Comment
+                    key={index} // Unique key prop
+                    name={name}
+                    rating={review.rating}
+                    date={review.date}
+                    comment={review.comment}
+                  />
+                );
+              })}
         </VerticalScrollLayout>
       </div>
 

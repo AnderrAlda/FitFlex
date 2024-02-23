@@ -1,17 +1,20 @@
-import React from "react";
+type Props = {
+  name: string;
+  rating: number;
+  date: string;
+  comment: string;
+};
 
-type Props = {};
-
-const Comment = (props: Props) => {
+const Comment = ({ name, rating, date, comment }: Props) => {
   return (
     <>
       <div className="mt-3">
         <div className="relative">
-          <p className="absolute">Ander</p>
-          <p className="text-right mr-5">2023/03/01</p>
+          <p className="absolute">{name}</p>
+          <p className="text-right mr-5">{date}</p>
         </div>
-        <p className="mt-3">Valoration: 4/5</p>
-        <p className="mt-3">Comment: The best product ever</p>
+        <p className="mt-3">Valoration: {rating}/5</p>
+        <p className="mt-3">Comment: {comment}</p>
       </div>
     </>
   );
