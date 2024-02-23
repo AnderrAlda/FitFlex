@@ -1,6 +1,7 @@
-import HomeHeader from "..";
+import HomeHeader from "../homeHeader";
 import { HeaderTypes } from "../../../types/headerTypes";
 import CartHeader from "../cartHeader";
+import ProductHeader from "../productHeader";
 
 type Props = {
   HeaderType: HeaderTypes;
@@ -15,6 +16,9 @@ const DynamicHeader = (props: Props) => {
       break;
     case HeaderTypes.Cart:
       HeaderComponent = CartHeader;
+      break;
+    case HeaderTypes.Product:
+      HeaderComponent = ProductHeader;
       break;
     default:
       HeaderComponent = HomeHeader;
