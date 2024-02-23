@@ -17,11 +17,13 @@ interface Cart {
 interface ContextValueType {
   contextData: Cart[];
   addToCart: (item: Cart) => void;
+  totalAmount: number;
 }
 
 export const CartContext = createContext<ContextValueType>({
   contextData: [],
   addToCart: () => {},
+  totalAmount: 0,
 });
 
 interface DataContextProviderProps {
@@ -36,8 +38,17 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = (
     return storedData ? JSON.parse(storedData) : [];
   });
 
+  const [totalAmount, setTotalAmount] = useState<number>(0);
+
   useEffect(() => {
     localStorage.setItem("cartData", JSON.stringify(contextData));
+
+    // Calculate total amount
+    const newTotalAmount = contextData.reduce((total, item) => {
+      return total + item.amount;
+    }, 0);
+
+    setTotalAmount(newTotalAmount);
   }, [contextData]);
 
   const addToCart = (item: Cart) => {
@@ -57,7 +68,7 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = (
     }
   };
 
-  const value: ContextValueType = { contextData, addToCart };
+  const value: ContextValueType = { contextData, addToCart, totalAmount };
 
   return (
     <CartContext.Provider value={value}>{props.children}</CartContext.Provider>

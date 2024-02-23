@@ -5,7 +5,7 @@ import { CartContext } from "../../../context/cartContext";
 type Props = {};
 
 const ProductHeader = (props: Props) => {
-  const { contextData } = useContext(CartContext);
+  const { totalAmount } = useContext(CartContext);
   return (
     <>
       <div>
@@ -29,7 +29,7 @@ const ProductHeader = (props: Props) => {
               ></path>
             </svg>
             <p className="absolute right-4 top-9 bg-slate-600 rounded-lg w-4 text-center">
-              {contextData.length}
+              {totalAmount}
             </p>
           </Link>
 
