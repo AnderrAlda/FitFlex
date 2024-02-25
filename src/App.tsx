@@ -1,9 +1,46 @@
-import { Outlet } from "react-router";
+import { Provider } from "react-redux";
+store;
+import store from "./redux/store";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { PrivateRoutes, PublicRoutes } from "./types/routes";
+import AuthGuard from "./guards/auth.guard";
+import RoutesWithNotFound from "./utils/routesWithNotFound";
+import { Suspense, lazy } from "react";
+import Logout from "./components/logout";
+import RoleGuard from "./guards/rol.guard";
+import { Roles } from "./types/roles";
+import Dashboard from "./pages/private/dashboard";
+
+const Login = lazy(() => import("./pages/login"));
+const Private = lazy(() => import("./pages/private/index"));
+
 function App() {
   return (
-    <>
-      <Outlet />
-    </>
+    <Provider store={store}>
+      <Suspense fallback={<>Cargando</>}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Logout />
+            <RoutesWithNotFound>
+              <Route
+                path="/"
+                element={<Navigate to={PrivateRoutes.PRIVATE} />}
+              />
+              <Route path={PublicRoutes.LOGIN} element={<Login />} />
+              <Route element={<AuthGuard privateValidation={true} />}>
+                <Route
+                  path={`${PrivateRoutes.PRIVATE}/*`}
+                  element={<Private />}
+                />
+              </Route>
+              <Route element={<RoleGuard rol={Roles.ADMIN} />}>
+                <Route path={PrivateRoutes.DASHBOARD} element={<Dashboard />} />
+              </Route>{" "}
+            </RoutesWithNotFound>
+          </BrowserRouter>
+        </Provider>
+      </Suspense>
+    </Provider>
   );
 }
 

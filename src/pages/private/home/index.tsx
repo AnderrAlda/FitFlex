@@ -1,13 +1,13 @@
 // HomePage component
 import { useState } from "react";
-import DynamicHeader from "../../components/headers/dynamicHeader";
-import SearchBar from "../../components/searchBar";
-import { HeaderTypes } from "../../types/headerTypes";
-import HorizontalScrollLayout from "../../layouts/horizontalScroll/index.tsx";
-import Categories from "../../components/categories";
-import ProductCardVertical from "../../components/productCardVertical/index.tsx";
-import ProductCardHorizontal from "../../components/productCardHorizontal/index.tsx";
-import { productsResponse } from "../../data.ts";
+import DynamicHeader from "../../../components/headers/dynamicHeader";
+import { HeaderTypes } from "../../../types/headerTypes";
+import SearchBar from "../../../components/searchBar";
+import HorizontalScrollLayout from "../../../layouts/horizontalScroll";
+import Categories from "../../../components/categories";
+import { productsResponse } from "../../../data";
+import ProductCardHorizontal from "../../../components/productCardHorizontal";
+import ProductCardVertical from "../../../components/productCardVertical";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
