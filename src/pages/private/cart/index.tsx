@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
-import DynamicHeader from "../../components/headers/dynamicHeader";
-import { HeaderTypes } from "../../types/headerTypes";
+import { useContext } from "react";
+import { CartContext } from "../../../context/cartContext";
+import { HeaderTypes } from "../../../types/headerTypes";
+import DynamicHeader from "../../../components/headers/dynamicHeader";
+import VerticalScrollLayout from "../../../layouts/verticalScroll";
+import ShoppingCartProduct from "../../../components/shoppingCartProduct";
 
-import VerticalScrollLayout from "../../layouts/verticalScroll/index.tsx";
-import ShoppingCartProduct from "../../components/shoppingCartProduct/index.tsx";
-
-import { CartContext } from "../../context/cartContext.tsx";
 type Props = {};
 
 const CartPage = (props: Props) => {

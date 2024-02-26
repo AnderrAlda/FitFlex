@@ -27,7 +27,7 @@ const ProductCardHorizontal = ({ name, img, id }: Props) => {
       <div className="bg-red-100 mt-10 rounded-2xl flex w-80">
         <div className="  mt-4 mb-4">
           <p className="text-3xl font-bold ml-3">{name}</p>
-          <Link to={`/product/${id}`}>
+          <Link to={`/private/product/${id}`}>
             {" "}
             <div className="flex gap-3 mt-3 mb-3 align-middle items-center">
               <p className="underline text-center ml-3 ">Shop now</p>

@@ -1,10 +1,10 @@
 import App from "../App";
 
 import { createBrowserRouter } from "react-router-dom";
-import ProductPage from "../pages/product";
-import CartPage from "../pages/cart";
+import ProductPage from "../pages/private/product";
 import Login from "../pages/login";
 import HomePage from "../pages/private/home";
+import CartPage from "../pages/private/cart";
 
 export const router = createBrowserRouter([
   {

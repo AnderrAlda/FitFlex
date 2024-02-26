@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
-import { HeaderTypes } from "../../types/headerTypes";
-import DynamicHeader from "../../components/headers/dynamicHeader";
-import Categories from "../../components/categories";
-import HorizontalScrollLayout from "../../layouts/horizontalScroll";
-import Comment from "../../components/comment";
-import VerticalScrollLayout from "../../layouts/verticalScroll";
-import ProductCardVertical from "../../components/productCardVertical";
+import { HeaderTypes } from "../../../types/headerTypes";
+import DynamicHeader from "../../../components/headers/dynamicHeader";
+import Categories from "../../../components/categories";
+import HorizontalScrollLayout from "../../../layouts/horizontalScroll";
+import Comment from "../../../components/comment";
+import VerticalScrollLayout from "../../../layouts/verticalScroll";
+import ProductCardVertical from "../../../components/productCardVertical";
 
-import { CartContext } from "../../context/cartContext";
-import { data, productsResponse } from "../../data";
+import { CartContext } from "../../../context/cartContext";
+import { data, productsResponse } from "../../../data";
 import { useParams } from "react-router";
 
 type Props = {};

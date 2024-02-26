@@ -12,7 +12,7 @@ const HomeHeader = (props: Props) => {
       <div className="flex justify-center relative">
         <img className="h-12 mt-3  " src={logo} alt="logo image" />
 
-        <Link to="/cart">
+        <Link to="/private/cart">
           <svg
             className="h-8 absolute right-5 mt-4"
             data-slot="icon"
