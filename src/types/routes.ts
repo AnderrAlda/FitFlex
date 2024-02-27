@@ -10,4 +10,5 @@ export const PrivateRoutes = {
   CART: "cart",
   PRODUCT: "product/:productId",
   CHECKOUT: "checkout",
+  PAYMENT: "payment",
 };
