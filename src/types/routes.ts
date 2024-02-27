@@ -9,4 +9,5 @@ export const PrivateRoutes = {
   HOME: "home",
   CART: "cart",
   PRODUCT: "product/:productId",
+  CHECKOUT: "checkout",
 };

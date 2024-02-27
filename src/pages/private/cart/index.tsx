@@ -4,12 +4,12 @@ import { HeaderTypes } from "../../../types/headerTypes";
 import DynamicHeader from "../../../components/headers/dynamicHeader";
 import VerticalScrollLayout from "../../../layouts/verticalScroll";
 import ShoppingCartProduct from "../../../components/shoppingCartProduct";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
 const CartPage = (props: Props) => {
-  const { contextData } = useContext(CartContext); // Destructuring contextData from CartContext
-  console.log(contextData);
+  const { contextData } = useContext(CartContext);
 
   const { totalPrice, totalAmount } = useContext(CartContext);
   return (
@@ -41,26 +41,28 @@ const CartPage = (props: Props) => {
                 <p>Total {totalAmount} items</p>
                 <p className="font-bold">USD {totalPrice}</p>
               </div>
-              <button className="bg-black text-white rounded-3xl p-3 ml-12 mt-2 w-72   flex justify-around">
-                <p className="font-bold">Proceed to checkout</p>
-                <svg
-                  className="h-6"
-                  data-slot="icon"
-                  data-darkreader-inline-stroke=""
-                  fill="none"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                  ></path>
-                </svg>
-              </button>
+              <Link to="/private/checkout">
+                <button className="bg-black text-white rounded-3xl p-3 ml-12 mt-2 w-72   flex justify-around">
+                  <p className="font-bold">Proceed to checkout</p>
+                  <svg
+                    className="h-6"
+                    data-slot="icon"
+                    data-darkreader-inline-stroke=""
+                    fill="none"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                    ></path>
+                  </svg>
+                </button>
+              </Link>
             </div>
           </div>
         )}
