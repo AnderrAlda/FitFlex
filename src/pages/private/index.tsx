@@ -4,6 +4,7 @@ import RoutesWithNotFound from "../../utils/routesWithNotFound";
 import { lazy } from "react";
 import CartPage from "./cart";
 import ProductPage from "./product";
+import Logout from "../../components/logout";
 
 const HomePage = lazy(() => import("./home"));
 

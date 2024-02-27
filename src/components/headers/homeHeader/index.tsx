@@ -3,6 +3,7 @@ import { logo } from "../../../assets/images";
 
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/cartContext";
+import Logout from "../../logout";
 type Props = {};
 
 const HomeHeader = (props: Props) => {
@@ -10,6 +11,7 @@ const HomeHeader = (props: Props) => {
   return (
     <div>
       <div className="flex justify-center relative">
+        <Logout />
         <img className="h-12 mt-3  " src={logo} alt="logo image" />
 
         <Link to="/private/cart">

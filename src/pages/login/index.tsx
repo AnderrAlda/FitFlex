@@ -7,6 +7,7 @@ import { PrivateRoutes, PublicRoutes } from "../../types/routes";
 import { useEffect, useState } from "react";
 import { clearLocalStorage } from "../../utils/localStorage";
 import { Roles } from "../../types/roles";
+import { loginPhoto } from "../../assets/images";
 
 type Props = {};
 
@@ -53,25 +54,47 @@ const Login = (props: Props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          autoComplete="off"
-          value={email}
-          onChange={(ev) => setEmail(ev.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(ev) => setPassword(ev.target.value)}
-        />
-        <button type="submit">Log in</button>
-      </form>
+    <div className="relative h-screen ">
+      <img src={loginPhoto} alt="" className="w-full h-auto" />
+      <div className="absolute inset-0 flex items-center justify-center ">
+        <div className="bg-white p-10 rounded-3xl w-full h-80">
+          <div className="justify-center text-center">
+            <p className="font-bold text-2xl">Welcome back</p>
+            <p className="text-xl">
+              Please fill E-mail & password to login your crossfit account
+            </p>
+          </div>
+          <form onSubmit={handleSubmit} className="mt-10 relative">
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              autoComplete="off"
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+              className="block w-full p-2 mb-2 border border-gray-300  rounded-xl"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
+              className="block w-full p-2 mb-2 border border-gray-300  rounded-xl"
+            />
+            <button
+              type="submit"
+              className="block w-full bg-black text-white p-2 rounde mt-10 rounded-xl"
+            >
+              Log in
+            </button>
+          </form>
+          <div className="flex gap-3 mt-10 items-center justify-center">
+            <p>Didnt have any account?</p>
+            <p className="underline font-bold">Sign Up here</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
