@@ -102,9 +102,9 @@ const PaymentPage = () => {
           <div className="pl-10">
             <p className="text-2xl font-bold">Payment</p>
           </div>
-          <Link to="/private/checkout">
+          <Link to="/private/ordered">
             <button className="bg-black text-white rounded-xl p-3 ml-12 mt-4 w-72   flex justify-around">
-              <p className="font-bold">Proceed</p>
+              <p className="font-bold">Pay</p>
             </button>
           </Link>
         </div>
