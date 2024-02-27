@@ -10,7 +10,7 @@ const ProductHeader = (props: Props) => {
     <>
       <div>
         <div className="flex justify-center relative">
-          <Link to="/">
+          <Link to="/private/home">
             <svg
               className="h-8 absolute left-5 mt-4"
               data-slot="icon"

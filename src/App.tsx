@@ -10,6 +10,7 @@ import Logout from "./components/logout";
 import RoleGuard from "./guards/rol.guard";
 import { Roles } from "./types/roles";
 import Dashboard from "./pages/private/dashboard";
+import StartPage from "./pages/startPage";
 
 const Login = lazy(() => import("./pages/login"));
 const Private = lazy(() => import("./pages/private/index"));
@@ -21,10 +22,7 @@ function App() {
         <Provider store={store}>
           <BrowserRouter>
             <RoutesWithNotFound>
-              <Route
-                path="/"
-                element={<Navigate to={PrivateRoutes.PRIVATE} />}
-              />
+              <Route path={PublicRoutes.START} element={<StartPage />} />
               <Route path={PublicRoutes.LOGIN} element={<Login />} />
               <Route element={<AuthGuard privateValidation={true} />}>
                 <Route
