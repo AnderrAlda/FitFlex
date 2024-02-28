@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { UserKey, createUser, resetUser } from "../../redux/states/user";
-import { getMorty } from "../../services/auth.service";
+import { getMorty, getUsers } from "../../services/auth.service";
 
 import { useDispatch } from "react-redux";
 import { PrivateRoutes, PublicRoutes } from "../../types/routes";
@@ -15,38 +15,38 @@ const Login = (props: Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   useEffect(() => {
     clearLocalStorage(UserKey);
     dispatch(resetUser());
     navigate(`/${PublicRoutes.LOGIN}`, { replace: true });
   }, []);
 
-  const login = async () => {
-    try {
-      const result = await getMorty();
-      console.log(result);
-      //tiene que ser asi:
-      /* dispatch(createUser(result)); */
-
-      //esto es para probar: cambiando de rol
-      dispatch(createUser({ ...result, rol: Roles.USER }));
-
-      //replace:true is for instead of /login/private, delete /login and /private
-      navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
-    } catch (error) {}
-  };
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   interface loginData {
     email: string;
     password: string;
   }
-  const validateUser = ({ email, password }: loginData) => {
-    if (email === "hola@gmail.com" && password === "test") login();
-    else alert("login no correcto");
+  const validateUser = async ({ email, password }: loginData) => {
+    try {
+      const user = await getUsers(email); // Fetch user data by email
+      if (user && user.password === password) {
+        // Check if user exists and password matches
+        console.log(user);
+        dispatch(createUser(user)); // Dispatch action to store user data
+
+        //replace:true is for instead of /login/private, delete /login and /private
+        navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
+      } else {
+        alert("Incorrect email or password");
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      alert("An error occurred. Please try again later.");
+    }
   };
+
   const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
 
