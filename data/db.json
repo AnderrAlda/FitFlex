@@ -6,7 +6,10 @@
         "name": "Rogue Alpaca Sled",
         "price": 10,
         "stock": 2,
-        "image": ["./assets/images", "./assets/images"],
+        "image": [
+          "/src/assets/images/RogueAlpacaSled.png",
+          "/src/assets/images/RogueAlpacaSled.png"
+        ],
         "description": "This is Product 1. It's a great product for your needs.",
         "category": "Slice Sed",
         "brand": "Rogue",
@@ -33,7 +36,10 @@
         "name": "Rogue Echo Sled",
         "price": 10,
         "stock": 8,
-        "image": ["./assets/images", "./assets/images"],
+        "image": [
+          "/src/assets/images/RogueEchoDogSled.png",
+          "/src/assets/images/RogueEchoDogSled.png"
+        ],
         "description": "This is Product 1. It's a great product for your needs.",
         "category": "Slice Sed",
         "brand": "Rogue",
@@ -60,7 +66,10 @@
         "name": "Rogue Slice Sled",
         "price": 10,
         "stock": 7,
-        "image": ["./assets/images", "./assets/images"],
+        "image": [
+          "/src/assets/images/RogueSliceSled.png",
+          "/src/assets/images/RogueSliceSled.png"
+        ],
         "description": "This is Product 1. It's a great product for your needs.",
         "category": "Slice Sed",
         "brand": "Rogue",

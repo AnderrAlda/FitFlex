@@ -1,27 +1,12 @@
 import { Link } from "react-router-dom";
 
-interface StaticAsset {
-  Image: string;
-}
-type Image = StaticAsset | string;
-
 type Props = {
   name: string;
-  img: Image;
+  img: string;
   id: string;
 };
 
 const ProductCardHorizontal = ({ name, img, id }: Props) => {
-  let src: string; // Define a variable to hold the src value
-
-  if (typeof img === "string") {
-    // If img is a string, directly assign it to src
-    src = img;
-  } else {
-    // If img is an object of type StaticAsset, choose one of its properties as src
-    src = img.Image; // You may need to handle other cases here based on your requirements
-  }
-
   return (
     <>
       <div className="bg-red-100 mt-10 rounded-2xl flex w-80">
@@ -53,8 +38,7 @@ const ProductCardHorizontal = ({ name, img, id }: Props) => {
         </div>
         <img
           className="w-36 h-36 object-cover p-3 rounded-3xl mt-4"
-          src={src}
-          alt="RogueAlpacaSled"
+          src={img}
         />
       </div>
     </>

@@ -1,13 +1,13 @@
 // HomePage component
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DynamicHeader from "../../../components/headers/dynamicHeader";
 import { HeaderTypes } from "../../../types/headerTypes";
 import SearchBar from "../../../components/searchBar";
 import HorizontalScrollLayout from "../../../layouts/horizontalScroll";
 import Categories from "../../../components/categories";
-import { productsResponse } from "../../../data";
 import ProductCardHorizontal from "../../../components/productCardHorizontal";
 import ProductCardVertical from "../../../components/productCardVertical";
+import { getProducts } from "../../../services/auth.service";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
@@ -15,6 +15,20 @@ const HomePage = () => {
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
   };
+
+  const [products, setProducts] = useState<ProductsResponse>();
+
+  useEffect(() => {
+    // Fetch products when the component mounts
+    getProducts()
+      .then((data) => {
+        setProducts(data); // Update state with fetched products
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []); // Empty dependency array ensures this effect runs only once, when the component mounts
 
   return (
     <>
@@ -25,6 +39,7 @@ const HomePage = () => {
           What are you looking for today?
         </p>
       </div>
+
       <SearchBar />
       <div className="flex flex-col h-full mt-10 rounded-3xl p-4 bg-slate-300">
         <HorizontalScrollLayout>
@@ -51,7 +66,7 @@ const HomePage = () => {
         </HorizontalScrollLayout>
 
         <HorizontalScrollLayout>
-          {productsResponse.products.map((item) => (
+          {products?.products.map((item) => (
             <ProductCardHorizontal
               key={item.id}
               name={item.name}
@@ -66,7 +81,7 @@ const HomePage = () => {
         </div>
 
         <HorizontalScrollLayout>
-          {productsResponse.products.map((item) => (
+          {products?.products.map((item) => (
             <ProductCardVertical
               key={item.id}
               name={item.name}

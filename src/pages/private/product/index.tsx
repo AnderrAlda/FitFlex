@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HeaderTypes } from "../../../types/headerTypes";
 import DynamicHeader from "../../../components/headers/dynamicHeader";
 import Categories from "../../../components/categories";
@@ -8,20 +8,48 @@ import VerticalScrollLayout from "../../../layouts/verticalScroll";
 import ProductCardVertical from "../../../components/productCardVertical";
 
 import { CartContext } from "../../../context/cartContext";
-import { data, productsResponse } from "../../../data";
+
 import { useParams } from "react-router";
+import { getAllUsers, getProducts } from "../../../services/auth.service";
 
 type Props = {};
 
 const ProductPage = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState("Overview");
 
+  const [products, setProducts] = useState<ProductsResponse>();
+  const [users, setUsers] = useState<Data>();
+
+  useEffect(() => {
+    // Fetch products when the component mounts
+    getProducts()
+      .then((data) => {
+        setProducts(data); // Update state with fetched products
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []); // Empty dependency array ensures this effect runs only once, when the component mounts
+
+  useEffect(() => {
+    // Fetch products when the component mounts
+    getAllUsers()
+      .then((data) => {
+        setUsers(data); // Update state with fetched products
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []); // Empty dependency array ensures this effect runs only once, when the component mounts
+
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
   };
 
   const { productId } = useParams();
-  const product = productsResponse.products.find(
+  const product = products?.products.find(
     (product) => product.id === productId
   )!;
   const { addToCart } = useContext(CartContext);
@@ -46,8 +74,12 @@ const ProductPage = (props: Props) => {
       <DynamicHeader HeaderType={HeaderTypes.Product} />
 
       <div className="mt-10 ml-5">
-        <p>USD {product.price}</p>
-        <p className="font-bold text-3xl">{product.name}</p>
+        {product && (
+          <>
+            <p>USD {product.price}</p>
+            <p className="font-bold text-3xl">{product.name}</p>
+          </>
+        )}
       </div>
 
       <div className="mt-5">
@@ -77,7 +109,7 @@ const ProductPage = (props: Props) => {
               <img
                 key={index} // Unique key prop
                 className="w-72 h-72 object-cover p-3 rounded-3xl mt-4"
-                src={typeof item === "string" ? item : item.Image}
+                src={item}
                 alt="RogueAlpacaSled"
               />
             ))}
@@ -94,13 +126,13 @@ const ProductPage = (props: Props) => {
       <div className="mt-10 ml-5">
         <p className="font-bold">Reviews (4)</p>
         <VerticalScrollLayout height="10rem">
-          {productsResponse &&
-            productsResponse.products &&
-            productsResponse.products
+          {products &&
+            products?.products &&
+            products?.products
               .find((product) => product.id === "64c9faed738507dddfc7c73c")
               ?.reviews.map((review, index) => {
                 // Find the user with matching userId
-                const user = data.users.find(
+                const user = users?.users.find(
                   (user) => user.id === review.userId
                 );
                 // Use ternary operator to conditionally render name
@@ -126,7 +158,7 @@ const ProductPage = (props: Props) => {
 
         <div className="ml-5 mb-5">
           <HorizontalScrollLayout>
-            {productsResponse.products.map((item) => (
+            {products?.products.map((item) => (
               <ProductCardVertical
                 key={item.id}
                 name={item.name}

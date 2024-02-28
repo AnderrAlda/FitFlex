@@ -1,12 +1,3 @@
-const baseUrl = "https://rickandmortyapi.com/api/";
-
-const characterUrl = baseUrl + "character/";
-
-export const getMorty = () => {
-  return fetch(characterUrl + "2").then((res) => res.json());
-};
-
-const userUrl = "http://localhost:3000/data";
 interface Review {
   id: number;
   userId: number;
@@ -35,6 +26,8 @@ interface User {
   wishlist: WishlistItem[];
 }
 
+const userUrl = "http://localhost:3000/data";
+
 export const getUsers = (userEmail: string) => {
   return fetch(userUrl)
     .then((res) => res.json())
@@ -43,4 +36,14 @@ export const getUsers = (userEmail: string) => {
       const user = data.users.find((user: User) => user.email === userEmail);
       return user;
     });
+};
+
+export const getAllUsers = () => {
+  return fetch(userUrl).then((res) => res.json());
+};
+
+const productUrl = "http://localhost:3000/productsResponse";
+
+export const getProducts = () => {
+  return fetch(productUrl).then((res) => res.json());
 };

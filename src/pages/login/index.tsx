@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { UserKey, createUser, resetUser } from "../../redux/states/user";
-import { getMorty, getUsers } from "../../services/auth.service";
+import { getUsers } from "../../services/auth.service";
 
 import { useDispatch } from "react-redux";
 import { PrivateRoutes, PublicRoutes } from "../../types/routes";
@@ -67,6 +67,7 @@ const Login = (props: Props) => {
           <form onSubmit={handleSubmit} className="mt-10 relative">
             <input
               type="text"
+              id="email"
               name="email"
               placeholder="Email"
               autoComplete="off"
@@ -76,6 +77,7 @@ const Login = (props: Props) => {
             />
             <input
               type="password"
+              id="password"
               name="password"
               placeholder="Password"
               value={password}

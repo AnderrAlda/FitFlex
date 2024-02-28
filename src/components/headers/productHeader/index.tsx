@@ -32,7 +32,7 @@ const ProductHeader = (props: Props) => {
 
           <p className="mt-4 text-xl font-bold">Product</p>
 
-          <Link to="/cart">
+          <Link to="/private/cart">
             <svg
               className="h-8 absolute right-5 mt-4"
               data-slot="icon"
