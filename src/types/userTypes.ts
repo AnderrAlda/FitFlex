@@ -25,6 +25,7 @@ interface User {
   password: string;
   email: string;
   rol: string;
+  address: string;
   wishlist: Product[];
 }
 
