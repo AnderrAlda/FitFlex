@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
 
+  const userData = JSON.parse(localStorage.getItem("user") || "{}");
+  const { name } = userData;
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
   };
@@ -38,14 +40,13 @@ const HomePage = () => {
     <>
       <DynamicHeader HeaderType={HeaderTypes.Home} />
       <div className="mt-5">
-        <p className="font-bold pl-3">Hi, Ander</p>
+        <p className="font-bold pl-3">Hi, {name}</p>
         <p className="font-bold text-4xl leading-27 p-3 pt-0">
           What are you looking for today?
         </p>
       </div>
 
-      <SearchBar />
-      <div className="flex flex-col h-full mt-10 rounded-3xl p-4 bg-slate-300">
+      <div className="flex flex-col h-full mt-20 rounded-3xl p-4 bg-slate-300">
         <HorizontalScrollLayout>
           <Categories
             name="Slice Sed"

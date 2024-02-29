@@ -11,8 +11,9 @@ const HomeHeader = (props: Props) => {
   const { totalAmount, contextData } = useContext(CartContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const userData = JSON.parse(localStorage.getItem("user") || "{}");
-  const navigate = useNavigate();
   const { profilePicture, rol } = userData;
+  const navigate = useNavigate();
+
   const handleProfilePictureClick = () => {
     if (rol === "admin") {
       navigate("/dashboard"); // Navigate to /dashboard if the user role is admin

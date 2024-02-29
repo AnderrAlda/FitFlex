@@ -276,7 +276,7 @@
   "users": [
     {
       "id": 1,
-      "name": "random_user_123",
+      "name": "ander",
       "password": "ander",
       "email": "ander@gmail.com",
       "rol": "admin",
