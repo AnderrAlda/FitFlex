@@ -53,3 +53,15 @@ const productUrl = "http://localhost:3000/productsResponse";
 export const getProducts = () => {
   return fetch(productUrl).then((res) => res.json());
 };
+
+export const getProductsByCategory = (category: string) => {
+  return fetch(productUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      // Filter products based on the given category
+      const products = data.products.filter(
+        (product: Product) => product.category === category
+      );
+      return products;
+    });
+};

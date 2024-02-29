@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface StaticAsset {
   Image: string;
 }
@@ -7,9 +9,10 @@ type Props = {
   name: string;
   img: Image;
   price: number;
+  id: string;
 };
 
-const ProductCardVertical = ({ name, img, price }: Props) => {
+const ProductCardVertical = ({ id, name, img, price }: Props) => {
   let src: string; // Define a variable to hold the src value
 
   if (typeof img === "string") {
@@ -22,18 +25,19 @@ const ProductCardVertical = ({ name, img, price }: Props) => {
 
   return (
     <>
-      {" "}
-      <div className="bg-red-100 w-40 h-42 rounded-2xl mt-4">
-        <img
-          className="w-40 h-40 object-cover p-3 rounded-3xl"
-          src={src}
-          alt="RogueAlpacaSled"
-        />
-        <div className="ml-3 mb-2">
-          <p>{name}</p>
-          <p>USD {price}</p>
+      <Link to={`/private/product/${id}`}>
+        <div className="bg-red-100 w-40 h-42 rounded-2xl mt-4">
+          <img
+            className="w-40 h-40 object-cover p-3 rounded-3xl"
+            src={src}
+            alt="RogueAlpacaSled"
+          />
+          <div className="ml-3 mb-2">
+            <p>{name}</p>
+            <p>USD {price}</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

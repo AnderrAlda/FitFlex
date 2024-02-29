@@ -8,6 +8,7 @@ import Logout from "../../components/logout";
 import CheckoutPage from "./checkout";
 import PaymentPage from "./payment";
 import OrderedPage from "./ordered";
+import ProductsPage from "./products";
 
 const HomePage = lazy(() => import("./home"));
 
@@ -22,6 +23,7 @@ const Private = () => {
       <Route path={PrivateRoutes.CHECKOUT} element={<CheckoutPage />} />
       <Route path={PrivateRoutes.PAYMENT} element={<PaymentPage />} />
       <Route path={PrivateRoutes.ORDERED} element={<OrderedPage />} />
+      <Route path={PrivateRoutes.PRODUCTS} element={<ProductsPage />} />
     </RoutesWithNotFound>
   );
 };

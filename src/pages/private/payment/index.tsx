@@ -44,6 +44,20 @@ const PaymentPage = () => {
     if (userDataString !== null) {
       const userData = JSON.parse(userDataString);
       if (userData && userData.Bank) {
+        // Update the bankCards state
+        setbankCards(userData.Bank);
+      }
+      // Update the shippingAddress state
+      setShippingAddress(userData.address);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Retrieve user information from local storage
+    const userDataString = localStorage.getItem("user");
+    if (userDataString !== null) {
+      const userData = JSON.parse(userDataString);
+      if (userData && userData.Bank) {
         // Extract the address from user information
         setShippingAddress(userData.address);
         setbankCards(userData.Bank);
@@ -117,11 +131,15 @@ const PaymentPage = () => {
           </div>
 
           <div className="ml-9 mt-5">
-            <BankCard
-              name={bankCards.nameCard}
-              number={bankCards.cardNumber}
-              expireDate={bankCards.expireDate}
-            />
+            {bankCards.nameCard && (
+              <div className=" mt-5">
+                <BankCard
+                  name={bankCards.nameCard}
+                  number={bankCards.cardNumber}
+                  expireDate={bankCards.expireDate}
+                />
+              </div>
+            )}
           </div>
         </div>
 

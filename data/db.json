@@ -8,7 +8,7 @@
         "stock": 2,
         "image": [
           "/src/assets/images/RogueAlpacaSled.png",
-          "/src/assets/images/RogueAlpacaSled.png"
+          "/src/assets/images/RogueAlpacaSled2.png"
         ],
         "description": "This is Product 1. It's a great product for your needs.",
         "category": "Slice Sed",
@@ -34,11 +34,11 @@
       {
         "id": "64c9faed738507dddfc7c74b",
         "name": "Rogue Echo Sled",
-        "price": 10,
+        "price": 12,
         "stock": 8,
         "image": [
           "/src/assets/images/RogueEchoDogSled.png",
-          "/src/assets/images/RogueEchoDogSled.png"
+          "/src/assets/images/RogueEchoDogSled2.png"
         ],
         "description": "This is Product 1. It's a great product for your needs.",
         "category": "Slice Sed",
@@ -64,14 +64,194 @@
       {
         "id": "64c9faed738507dddfc7c76d",
         "name": "Rogue Slice Sled",
-        "price": 10,
+        "price": 11,
         "stock": 7,
         "image": [
           "/src/assets/images/RogueSliceSled.png",
-          "/src/assets/images/RogueSliceSled.png"
+          "/src/assets/images/RogueSliceSled2.png"
         ],
         "description": "This is Product 1. It's a great product for your needs.",
         "category": "Slice Sed",
+        "brand": "Rogue",
+        "rating": 4.5,
+        "reviews": [
+          {
+            "id": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Great product! I love it.",
+            "date": "2023-08-01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good product. Recommended.",
+            "date": "2023-08-02"
+          }
+        ]
+      },
+      {
+        "id": "64c9faed738507dddfc7c77d",
+        "name": "The Ohio bar",
+        "price": 9,
+        "stock": 7,
+        "image": [
+          "/src/assets/images/OhioBar.png",
+          "/src/assets/images/OhioBar2.png"
+        ],
+        "description": "This is Product 1. It's a great product for your needs.",
+        "category": "Barbells",
+        "brand": "Rogue",
+        "rating": 4.5,
+        "reviews": [
+          {
+            "id": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Great product! I love it.",
+            "date": "2023-08-01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good product. Recommended.",
+            "date": "2023-08-02"
+          }
+        ]
+      },
+      {
+        "id": "64c9faed738507dddfc7c78d",
+        "name": "The Bella bar",
+        "price": 5,
+        "stock": 7,
+        "image": [
+          "/src/assets/images/TheBellaBar.png",
+          "/src/assets/images/TheBellaBar2.png"
+        ],
+        "description": "This is Product 1. It's a great product for your needs.",
+        "category": "Barbells",
+        "brand": "Rogue",
+        "rating": 4.5,
+        "reviews": [
+          {
+            "id": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Great product! I love it.",
+            "date": "2023-08-01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good product. Recommended.",
+            "date": "2023-08-02"
+          }
+        ]
+      },
+      {
+        "id": "64c9faed738507dddfc7c80d",
+        "name": "The Rogue bar",
+        "price": 4,
+        "stock": 7,
+        "image": [
+          "/src/assets/images/TheRogueBar.png",
+          "/src/assets/images/TheRogueBar2.png"
+        ],
+        "description": "This is Product 1. It's a great product for your needs.",
+        "category": "Barbells",
+        "brand": "Rogue",
+        "rating": 4.5,
+        "reviews": [
+          {
+            "id": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Great product! I love it.",
+            "date": "2023-08-01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good product. Recommended.",
+            "date": "2023-08-02"
+          }
+        ]
+      },
+      {
+        "id": "64c9faed738507dddfc7c81d",
+        "name": "The HG Plate",
+        "price": 12,
+        "stock": 7,
+        "image": [
+          "/src/assets/images/TheHGPlate.png",
+          "/src/assets/images/TheHGPlate2.png"
+        ],
+        "description": "This is Product 1. It's a great product for your needs.",
+        "category": "Plates",
+        "brand": "Rogue",
+        "rating": 4.5,
+        "reviews": [
+          {
+            "id": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Great product! I love it.",
+            "date": "2023-08-01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good product. Recommended.",
+            "date": "2023-08-02"
+          }
+        ]
+      },
+      {
+        "id": "64c9faed738507dddfc7c82d",
+        "name": "Deep Dish Plate",
+        "price": 13,
+        "stock": 7,
+        "image": [
+          "/src/assets/images/DeepDishPlate.png",
+          "/src/assets/images/DeepDishPlate2.png"
+        ],
+        "description": "This is Product 1. It's a great product for your needs.",
+        "category": "Plates",
+        "brand": "Rogue",
+        "rating": 4.5,
+        "reviews": [
+          {
+            "id": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Great product! I love it.",
+            "date": "2023-08-01"
+          },
+          {
+            "id": 2,
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good product. Recommended.",
+            "date": "2023-08-02"
+          }
+        ]
+      },
+      {
+        "id": "64c9faed738507dddfc7c83d",
+        "name": "LB Comp Plate",
+        "price": 14,
+        "stock": 7,
+        "image": [
+          "/src/assets/images/CompPlate.png",
+          "/src/assets/images/CompPlate2.png"
+        ],
+        "description": "This is Product 1. It's a great product for your needs.",
+        "category": "Plates",
         "brand": "Rogue",
         "rating": 4.5,
         "reviews": [

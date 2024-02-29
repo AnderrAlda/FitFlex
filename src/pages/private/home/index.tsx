@@ -7,7 +7,11 @@ import HorizontalScrollLayout from "../../../layouts/horizontalScroll";
 import Categories from "../../../components/categories";
 import ProductCardHorizontal from "../../../components/productCardHorizontal";
 import ProductCardVertical from "../../../components/productCardVertical";
-import { getProducts } from "../../../services/auth.service";
+import {
+  getProducts,
+  getProductsByCategory,
+} from "../../../services/auth.service";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Slice Sed");
@@ -16,11 +20,11 @@ const HomePage = () => {
     setSelectedCategory(categoryName);
   };
 
-  const [products, setProducts] = useState<ProductsResponse>();
+  const [products, setProducts] = useState<Product[]>();
 
   useEffect(() => {
     // Fetch products when the component mounts
-    getProducts()
+    getProductsByCategory(selectedCategory)
       .then((data) => {
         setProducts(data); // Update state with fetched products
         console.log(data);
@@ -28,7 +32,7 @@ const HomePage = () => {
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  }, []); // Empty dependency array ensures this effect runs only once, when the component mounts
+  }, [selectedCategory]); // Empty dependency array ensures this effect runs only once, when the component mounts
 
   return (
     <>
@@ -49,24 +53,19 @@ const HomePage = () => {
             onClick={handleCategoryClick}
           />
           <Categories
-            name="Kettelbells"
-            selected={selectedCategory === "Kettelbells"}
+            name="Barbells"
+            selected={selectedCategory === "Barbells"}
             onClick={handleCategoryClick}
           />
           <Categories
-            name="Dumbbells"
-            selected={selectedCategory === "Dumbbells"}
-            onClick={handleCategoryClick}
-          />
-          <Categories
-            name="Dumbbells2"
-            selected={selectedCategory === "Dumbbells2"}
+            name="Plates"
+            selected={selectedCategory === "Plates"}
             onClick={handleCategoryClick}
           />
         </HorizontalScrollLayout>
 
         <HorizontalScrollLayout>
-          {products?.products.map((item) => (
+          {products?.map((item) => (
             <ProductCardHorizontal
               key={item.id}
               name={item.name}
@@ -77,13 +76,16 @@ const HomePage = () => {
         </HorizontalScrollLayout>
         <div className="mt-10 flex justify-between mx-3">
           <p className="font-bold text-2xl text-center">Featured products</p>
-          <p className="mt-2">See All</p>
+          <Link to="/private/products">
+            <p className="mt-2">See All</p>
+          </Link>
         </div>
 
         <HorizontalScrollLayout>
-          {products?.products.map((item) => (
+          {products?.map((item) => (
             <ProductCardVertical
               key={item.id}
+              id={item.id}
               name={item.name}
               img={item.image[0]}
               price={item.price}
