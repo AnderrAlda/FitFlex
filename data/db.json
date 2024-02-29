@@ -101,7 +101,13 @@
         "password": "ander",
         "email": "ander@gmail.com",
         "rol": "admin",
-        "address": "endaia plaza 3 1.izq"
+        "address": "endaia plaza 3 1.izq",
+        "Bank": {
+          "name": "anderalda",
+          "number": "1295654069542323687",
+          "expireDate": "25/03",
+          "cvv": "321"
+        }
       }
     ]
   }

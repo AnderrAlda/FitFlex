@@ -19,6 +19,13 @@ interface Product {
   reviews: Review[];
 }
 
+interface Bank {
+  nameCard: string;
+  cardNumber: number;
+  expireDate: string;
+  cvv: number;
+}
+
 interface User {
   id: number;
   name: string;
@@ -26,6 +33,7 @@ interface User {
   email: string;
   rol: string;
   address: string;
+  bank: Bank;
   wishlist: Product[];
 }
 

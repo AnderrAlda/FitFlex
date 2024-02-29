@@ -18,6 +18,27 @@ const PaymentModal = ({ isOpen, onClose }: ModalProps) => {
     onClose();
   };
 
+  const [nameCard, setNameCard] = useState<string>("");
+  const [cardNumber, setCardNumber] = useState<number>(0);
+  const [expireDate, setExpireDate] = useState<string>("");
+  const [cvv, setCvv] = useState<number>(0);
+
+  // Load user data from localStorage
+  const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+
+  // Function to handle address change
+  const handleChangeAddress = () => {
+    // Update address in user object
+    const updatedUser = {
+      ...user,
+      Bank: { nameCard, cardNumber, expireDate, cvv },
+    };
+    // Update user data in localStorage
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    // Close modal
+    closeModal();
+  };
+
   return (
     <>
       {isVisible && (
@@ -57,6 +78,8 @@ const PaymentModal = ({ isOpen, onClose }: ModalProps) => {
                 name="StreetName"
                 autoComplete="off"
                 className="block w-full p-2 mb-2 border border-gray-300  rounded-xl"
+                value={nameCard}
+                onChange={(e) => setNameCard(e.target.value)}
               />
               <p className="text-gray-500">Card number</p>
               <input
@@ -64,6 +87,8 @@ const PaymentModal = ({ isOpen, onClose }: ModalProps) => {
                 name="StreetNumber"
                 autoComplete="off"
                 className="block w-full p-2 mb-2 border border-gray-300  rounded-xl"
+                value={cardNumber}
+                onChange={(e) => setCardNumber(Number(e.target.value))}
               />
               <div className="flex">
                 <div>
@@ -73,7 +98,9 @@ const PaymentModal = ({ isOpen, onClose }: ModalProps) => {
                     name="Apartment"
                     autoComplete="off"
                     className="block w-full p-2 mb-2 border border-gray-300  rounded-xl"
-                  />{" "}
+                    value={expireDate}
+                    onChange={(e) => setExpireDate(e.target.value)}
+                  />
                 </div>
                 <div>
                   <p className="text-gray-500">CVV</p>
@@ -82,10 +109,15 @@ const PaymentModal = ({ isOpen, onClose }: ModalProps) => {
                     name="Apartment"
                     autoComplete="off"
                     className="block w-full p-2 mb-2 border border-gray-300  rounded-xl"
+                    value={cvv}
+                    onChange={(e) => setCvv(Number(e.target.value))}
                   />
                 </div>
               </div>
-              <button className="bg-black text-white rounded-xl p-3 ml-4 mt-4 w-72   flex justify-around">
+              <button
+                onClick={handleChangeAddress}
+                className="bg-black text-white rounded-xl p-3 ml-4 mt-4 w-72   flex justify-around"
+              >
                 <p className="font-bold">Proceed</p>
               </button>
             </div>

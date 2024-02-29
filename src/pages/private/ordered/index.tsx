@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../../context/cartContext";
 
 const OrderedPage = () => {
+  const { totalPrice } = useContext(CartContext);
+
+  // Function to clear the cartId from localStorage
+  const handleContinueShopping = () => {
+    localStorage.removeItem("cartData");
+  };
+
   return (
     <>
       <div className="flex justify-center mt-32">
@@ -30,15 +39,18 @@ const OrderedPage = () => {
           <p className="text-gray-500 text-xl">Summary</p>
         </div>
         <div>
-          <p className="text-gray-500">580.00$</p>
+          <p className="text-gray-500">{totalPrice}$</p>
           <p className="text-gray-500 text-lg">7.20$</p>
-          <p className="text-gray-500 text-xl">587.20$</p>
+          <p className="text-gray-500 text-xl">{totalPrice + 7.2}$</p>
         </div>
       </div>
 
       <div className="mt-20">
         <Link to="/private/">
-          <button className="bg-black text-white rounded-xl p-3 ml-12 mt-4 w-72   flex justify-around">
+          <button
+            onClick={handleContinueShopping}
+            className="bg-black text-white rounded-xl p-3 ml-12 mt-4 w-72   flex justify-around"
+          >
             <p className="font-bold">Continue Shopping</p>
           </button>
         </Link>

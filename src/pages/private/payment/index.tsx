@@ -1,34 +1,68 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DynamicHeader from "../../../components/headers/dynamicHeader";
 import { HeaderTypes } from "../../../types/headerTypes";
 import { Link } from "react-router-dom";
 import HorizontalScrollLayout from "../../../layouts/horizontalScroll";
 import BankCard from "../../../components/bankCard";
 import PaymentModal from "../../../components/paymentModal";
+import { CartContext } from "../../../context/cartContext";
+
+const initialBankCard: Bank = {
+  nameCard: "",
+  cardNumber: 0,
+  expireDate: "",
+  cvv: 0,
+};
 
 const PaymentPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [shippingAddress, setShippingAddress] = useState<string>("");
+  const [bankCards, setbankCards] = useState<Bank>(initialBankCard);
 
+  const { totalPrice } = useContext(CartContext);
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
+    // Reload user information from local storage
+    const userDataString = localStorage.getItem("user");
+    if (userDataString !== null) {
+      const userData = JSON.parse(userDataString);
+      if (userData && userData.Bank) {
+        // Update the bankCards state
+        setbankCards(userData.Bank);
+      }
+    }
+    // Close the modal
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    // Retrieve user information from local storage
+    const userDataString = localStorage.getItem("user");
+    if (userDataString !== null) {
+      const userData = JSON.parse(userDataString);
+      if (userData && userData.Bank) {
+        // Extract the address from user information
+        setShippingAddress(userData.address);
+        setbankCards(userData.Bank);
+      }
+    }
+  }, []);
 
   return (
     <>
       <DynamicHeader HeaderType={HeaderTypes.Payment} />
 
       <div>
-        <div className="mt-10">
+        <div className="mt-5">
           <p className="text-2xl font-bold ml-9">Shipping address</p>
 
           <div className="flex justify-center gap-10 items-center m-5">
             <div>
               <p>Shipping address</p>
-              <p>Endaia plaza 3 1.izq</p>
+              <p>{shippingAddress}</p>
             </div>
             <svg
               className="h-8"
@@ -48,6 +82,12 @@ const PaymentPage = () => {
               ></path>
             </svg>
           </div>
+          <button
+            onClick={openModal}
+            className="bg-gray-300 rounded-lg w-32 h-8 ml-9"
+          >
+            Change
+          </button>
         </div>
 
         <div className="mt-10">
@@ -77,11 +117,11 @@ const PaymentPage = () => {
           </div>
 
           <div className="ml-9 mt-5">
-            <HorizontalScrollLayout>
-              <BankCard />
-              <BankCard />
-              <BankCard />
-            </HorizontalScrollLayout>
+            <BankCard
+              name={bankCards.nameCard}
+              number={bankCards.cardNumber}
+              expireDate={bankCards.expireDate}
+            />
           </div>
         </div>
 
@@ -92,9 +132,9 @@ const PaymentPage = () => {
             <p className="text-gray-500 text-xl">Summary</p>
           </div>
           <div>
-            <p className="text-gray-500">580.00$</p>
+            <p className="text-gray-500">{totalPrice}$</p>
             <p className="text-gray-500 text-lg">7.20$</p>
-            <p className="text-gray-500 text-xl">587.20$</p>
+            <p className="text-gray-500 text-xl">{totalPrice + 7.2}$</p>
           </div>
         </div>
 
