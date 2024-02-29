@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { clearLocalStorage } from "../../utils/localStorage";
 import { Roles } from "../../types/roles";
 import { loginPhoto } from "../../assets/images";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -18,22 +19,18 @@ const Login = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    clearLocalStorage(UserKey);
-    dispatch(resetUser());
-    navigate(`/${PublicRoutes.LOGIN}`, { replace: true });
-  }, []);
-
   interface loginData {
     email: string;
     password: string;
   }
   const validateUser = async ({ email, password }: loginData) => {
     try {
-      const user = await getUsers(email); // Fetch user data by email
+      console.log("email:" + email);
+      const user = await getUsers(email);
+      console.log("return" + user.email + user.password);
       if (user && user.password === password) {
         // Check if user exists and password matches
-        console.log(user);
+        console.log("userpass is correct");
         dispatch(createUser(user)); // Dispatch action to store user data
 
         //replace:true is for instead of /login/private, delete /login and /private
@@ -93,7 +90,9 @@ const Login = (props: Props) => {
           </form>
           <div className="flex gap-3 mt-10 items-center justify-center">
             <p>Didnt have any account?</p>
-            <p className="underline font-bold">Sign Up here</p>
+            <Link to="/register">
+              <p className="underline font-bold">Sign Up here</p>
+            </Link>
           </div>
         </div>
       </div>

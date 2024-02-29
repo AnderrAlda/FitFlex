@@ -93,22 +93,48 @@
       }
     ]
   },
-  "data": {
-    "users": [
-      {
-        "id": 1,
-        "name": "random_user_123",
-        "password": "ander",
-        "email": "ander@gmail.com",
-        "rol": "admin",
-        "address": "endaia plaza 3 1.izq",
-        "Bank": {
-          "name": "anderalda",
-          "number": "1295654069542323687",
-          "expireDate": "25/03",
-          "cvv": "321"
-        }
+  "users": [
+    {
+      "id": 1,
+      "name": "random_user_123",
+      "password": "ander",
+      "email": "ander@gmail.com",
+      "rol": "admin",
+      "address": "endaia plaza 3 1.izq",
+      "Bank": {
+        "name": "anderalda",
+        "number": "1295654069542323687",
+        "expireDate": "25/03",
+        "cvv": "321"
       }
-    ]
-  }
+    },
+    {
+      "id": 2,
+      "name": "pedro",
+      "email": "pedro@gmail.com",
+      "password": "pedro",
+      "rol": "user",
+      "address": "",
+      "bank": {
+        "nameCard": "",
+        "cardNumber": 0,
+        "expireDate": "",
+        "cvv": 0
+      }
+    },
+    {
+      "id": 3,
+      "name": "mikel",
+      "email": "mikel@gmail.com",
+      "password": "mikel",
+      "rol": "user",
+      "address": "",
+      "bank": {
+        "nameCard": "",
+        "cardNumber": 0,
+        "expireDate": "",
+        "cvv": 0
+      }
+    }
+  ]
 }

@@ -34,9 +34,4 @@ interface User {
   rol: string;
   address: string;
   bank: Bank;
-  wishlist: Product[];
-}
-
-interface Data {
-  users: User[];
 }

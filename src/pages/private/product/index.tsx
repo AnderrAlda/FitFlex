@@ -18,7 +18,7 @@ const ProductPage = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState("Overview");
 
   const [products, setProducts] = useState<ProductsResponse>();
-  const [users, setUsers] = useState<Data>();
+  const [users, setUsers] = useState<User[]>();
 
   useEffect(() => {
     // Fetch products when the component mounts
@@ -132,9 +132,7 @@ const ProductPage = (props: Props) => {
               .find((product) => product.id === "64c9faed738507dddfc7c73c")
               ?.reviews.map((review, index) => {
                 // Find the user with matching userId
-                const user = users?.users.find(
-                  (user) => user.id === review.userId
-                );
+                const user = users?.find((user) => user.id === review.userId);
                 // Use ternary operator to conditionally render name
                 const name = user ? user.name : "Unknown";
                 return (
