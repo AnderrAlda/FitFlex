@@ -14,7 +14,11 @@ const Logout = () => {
     navigate(PublicRoutes.LOGIN, { replace: true });
   };
 
-  return <button onClick={logOut}>Log out</button>;
+  return (
+    <button onClick={logOut} className="text-white">
+      Log out
+    </button>
+  );
 };
 
 export default Logout;

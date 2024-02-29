@@ -26,11 +26,12 @@ const Login = (props: Props) => {
   const validateUser = async ({ email, password }: loginData) => {
     try {
       console.log("email:" + email);
-      const user = await getUsers(email);
+      const user: User = await getUsers(email);
       console.log("return" + user.email + user.password);
       if (user && user.password === password) {
         // Check if user exists and password matches
         console.log("userpass is correct");
+        console.log("the user:" + user);
         dispatch(createUser(user)); // Dispatch action to store user data
 
         //replace:true is for instead of /login/private, delete /login and /private

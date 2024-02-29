@@ -34,4 +34,5 @@ interface User {
   rol: string;
   address: string;
   bank: Bank;
+  profilePicture: string;
 }

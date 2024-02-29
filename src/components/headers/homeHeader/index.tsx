@@ -1,17 +1,36 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { logo } from "../../../assets/images";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/cartContext";
 import Logout from "../../logout";
+
 type Props = {};
 
 const HomeHeader = (props: Props) => {
   const { totalAmount, contextData } = useContext(CartContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("user") || "{}");
+  const navigate = useNavigate();
+  const { profilePicture, rol } = userData;
+  const handleProfilePictureClick = () => {
+    if (rol === "admin") {
+      navigate("/dashboard"); // Navigate to /dashboard if the user role is admin
+    } else {
+      setIsModalOpen(true); // Open the modal otherwise
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-center relative">
-        <Logout />
+        <img
+          className="h-12 absolute left-5 mt-2"
+          src={profilePicture}
+          alt="logo image"
+          onClick={handleProfilePictureClick}
+        />
+
         <img className="h-12 mt-3  " src={logo} alt="logo image" />
 
         <Link to="/private/cart">
@@ -42,6 +61,16 @@ const HomeHeader = (props: Props) => {
           )}
         </Link>
       </div>
+      {isModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-4 rounded-lg absolute top-5 left-5 h-22">
+            <div className="mb-5 bg-black rounded-lg">
+              <Logout />
+            </div>
+            <button onClick={() => setIsModalOpen(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

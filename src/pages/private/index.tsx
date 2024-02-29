@@ -4,7 +4,6 @@ import RoutesWithNotFound from "../../utils/routesWithNotFound";
 import { lazy } from "react";
 import CartPage from "./cart";
 import ProductPage from "./product";
-import Logout from "../../components/logout";
 import CheckoutPage from "./checkout";
 import PaymentPage from "./payment";
 import OrderedPage from "./ordered";

@@ -286,24 +286,11 @@
         "number": "1295654069542323687",
         "expireDate": "25/03",
         "cvv": "321"
-      }
+      },
+      "profilePicture": "https://avataaars.io/?accessoriesType=Wayfarers&avatarStyle=Circle&clotheColor=White&clotheType=BlazerShirt&eyeType=Cry&eyebrowType=UpDownNatural&facialHairColor=Platinum&facialHairType=MoustacheFancy&hairColor=Platinum&hatColor=Heather&mouthType=Serious&skinColor=Light&topType=ShortHairTheCaesarSidePart"
     },
     {
       "id": 2,
-      "name": "pedro",
-      "email": "pedro@gmail.com",
-      "password": "pedro",
-      "rol": "user",
-      "address": "",
-      "bank": {
-        "nameCard": "",
-        "cardNumber": 0,
-        "expireDate": "",
-        "cvv": 0
-      }
-    },
-    {
-      "id": 3,
       "name": "mikel",
       "email": "mikel@gmail.com",
       "password": "mikel",
@@ -314,7 +301,8 @@
         "cardNumber": 0,
         "expireDate": "",
         "cvv": 0
-      }
+      },
+      "profilePicture": "https://avataaars.io/?accessoriesType=Wayfarers&avatarStyle=Circle&clotheColor=PastelBlue&clotheType=Hoodie&eyeType=Dizzy&eyebrowType=Default&facialHairColor=Blonde&facialHairType=Blank&hairColor=Auburn&hatColor=PastelBlue&mouthType=Sad&skinColor=DarkBrown&topType=LongHairNotTooLong"
     }
   ]
 }

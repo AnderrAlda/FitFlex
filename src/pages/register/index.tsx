@@ -3,12 +3,13 @@ import { loginPhoto } from "../../assets/images";
 import { Link, useNavigate } from "react-router-dom";
 import { addUser } from "../../services/auth.service";
 import { Roles } from "../../types/roles";
+import { AvatarGenerator } from "random-avatar-generator";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
-
+  const generator = new AvatarGenerator();
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault(); // Prevent default form submission
     const emailParts = email.split("@");
@@ -22,6 +23,7 @@ const Register = () => {
         rol: Roles.USER,
         address: "",
         bank: { nameCard: "", cardNumber: 0, expireDate: "", cvv: 0 },
+        profilePicture: generator.generateRandomAvatar(),
       });
       console.log("Added user:", addedUser);
 
