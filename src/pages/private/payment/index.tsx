@@ -6,6 +6,7 @@ import HorizontalScrollLayout from "../../../layouts/horizontalScroll";
 import BankCard from "../../../components/bankCard";
 import PaymentModal from "../../../components/paymentModal";
 import { CartContext } from "../../../context/cartContext";
+import { getDiscount } from "../../../services/auth.service";
 
 const initialBankCard: Bank = {
   nameCard: "",
@@ -18,6 +19,24 @@ const PaymentPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [shippingAddress, setShippingAddress] = useState<string>("");
   const [bankCards, setbankCards] = useState<Bank>(initialBankCard);
+  const [discount, setDiscount] = useState<number>(0);
+
+  // Define an async function to fetch the discount
+  const fetchDiscount = async () => {
+    try {
+      // Call getDiscount function to fetch the discount
+      const discountData = await getDiscount();
+      // Set the discount state with the fetched discount value
+      setDiscount(discountData);
+    } catch (error) {
+      console.error("Error fetching discount:", error);
+    }
+  };
+
+  // Call fetchDiscount function when the component mounts
+  useEffect(() => {
+    fetchDiscount();
+  }, []);
 
   const { totalPrice } = useContext(CartContext);
   const openModal = () => {
@@ -64,6 +83,9 @@ const PaymentPage = () => {
       }
     }
   }, []);
+
+  const discountedAmount = (totalPrice * discount) / 100;
+  const finalPrice = totalPrice - discountedAmount;
 
   return (
     <>
@@ -147,12 +169,14 @@ const PaymentPage = () => {
           <div>
             <p className="text-gray-500">Order</p>
             <p className="text-gray-500 text-lg">Delivery</p>
+            <p className="text-gray-500 text-lg">Discount</p>
             <p className="text-gray-500 text-xl">Summary</p>
           </div>
           <div>
             <p className="text-gray-500">{totalPrice}$</p>
             <p className="text-gray-500 text-lg">7.20$</p>
-            <p className="text-gray-500 text-xl">{totalPrice + 7.2}$</p>
+            <p className="text-gray-500 text-lg">{discount}%</p>
+            <p className="text-gray-500 text-xl">{finalPrice + 7.2}$</p>
           </div>
         </div>
 

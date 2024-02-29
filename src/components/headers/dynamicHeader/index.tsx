@@ -5,6 +5,7 @@ import ProductHeader from "../productHeader";
 import CheckoutHeader from "../checkoutHeader";
 import PaymentHeader from "../paymentHeader";
 import ProductsHeader from "../productsHeader";
+import AdminHeader from "../adminHeader";
 
 type Props = {
   HeaderType: HeaderTypes;
@@ -31,6 +32,12 @@ const DynamicHeader = (props: Props) => {
       break;
     case HeaderTypes.Products:
       HeaderComponent = ProductsHeader;
+      break;
+    case HeaderTypes.Products:
+      HeaderComponent = ProductsHeader;
+      break;
+    case HeaderTypes.Admin:
+      HeaderComponent = AdminHeader;
       break;
     default:
       HeaderComponent = HomeHeader;

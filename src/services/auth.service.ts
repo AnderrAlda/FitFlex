@@ -65,3 +65,48 @@ export const getProductsByCategory = (category: string) => {
       return products;
     });
 };
+export const changeDiscount = async (newDiscount: number) => {
+  try {
+    const discountUrl = "http://localhost:3000/others";
+
+    // Fetch the current discount object
+    const response = await fetch(discountUrl);
+    const currentDiscount = await response.json();
+
+    // Update the discount value
+    currentDiscount.discount = newDiscount;
+
+    // Send a PATCH request to update the discount object
+    const updateResponse = await fetch(discountUrl, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(currentDiscount),
+    });
+
+    // Check if the request was successful
+    if (!updateResponse.ok) {
+      throw new Error("Failed to update discount");
+    }
+
+    // Parse the response data
+    const data = await updateResponse.json();
+    console.log("Discount updated successfully:", data);
+    return data; // return the updated discount data
+  } catch (error) {
+    console.error("Error updating discount:", error);
+    throw error;
+  }
+};
+
+const othersUrl = "http://localhost:3000/others";
+
+export const getDiscount = () => {
+  return fetch(othersUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      // Extract and return the discount value
+      return data.discount;
+    });
+};

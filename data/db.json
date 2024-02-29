@@ -304,5 +304,9 @@
       },
       "profilePicture": "https://avataaars.io/?accessoriesType=Wayfarers&avatarStyle=Circle&clotheColor=PastelBlue&clotheType=Hoodie&eyeType=Dizzy&eyebrowType=Default&facialHairColor=Blonde&facialHairType=Blank&hairColor=Auburn&hatColor=PastelBlue&mouthType=Sad&skinColor=DarkBrown&topType=LongHairNotTooLong"
     }
-  ]
+  ],
+  "others": {
+    "item": {},
+    "discount": 42
+  }
 }

@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import { UserKey, resetUser } from "../../redux/states/user";
 import { clearLocalStorage } from "../../utils/localStorage";
-import { PublicRoutes } from "../../types/routes";
 
 import { useDispatch } from "react-redux";
 
@@ -11,7 +10,7 @@ const Logout = () => {
   const logOut = () => {
     clearLocalStorage(UserKey);
     dispatch(resetUser());
-    navigate(PublicRoutes.LOGIN, { replace: true });
+    navigate("/login");
   };
 
   return (

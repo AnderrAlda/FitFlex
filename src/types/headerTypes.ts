@@ -6,4 +6,5 @@ export enum HeaderTypes {
   Checkout = "Checkout",
   Payment = "Payment",
   Products = "Products",
+  Admin = "Admin",
 }
