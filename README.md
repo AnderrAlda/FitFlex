@@ -1,5 +1,5 @@
 <p align="center">
-     <img src="/home/rener/AIT/FitFlex/src/readme.png" height="300px">
+     <img src="home/rener/AIT/FitFlex/src/readme.png" height="300px">
 
 </p>
 
